@@ -18,3 +18,19 @@ $govuk-assets-path: '/govuk/assets/';
 @import "components/cookie-banner";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+
+.intro-page {
+  .govuk-header {
+    border-bottom-color: govuk-colour("black");
+  }
+  .govuk-header__container {
+    border-bottom: none;
+  }
+}
+.intro-panel {
+  background-color: govuk-colour("blue");
+  * {
+    color: govuk-colour("white");
+  }
+}

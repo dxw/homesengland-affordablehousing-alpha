@@ -34,7 +34,7 @@
 {% endblock %}
 
 {% block pageTitle %}
-  GOV.UK Prototype Kit
+  Apply for affordable housing funding
 {% endblock %}
 
 {% block header %}
@@ -44,8 +44,26 @@
     homepageUrl: "/",
     serviceName: serviceName,
     serviceUrl: "/",
-    containerClasses: "govuk-width-container"
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "/",
+        text: "About",
+        active: currentPage == 'about'
+      },
+      {
+        href: "/prototypes",
+        text: "Prototypes",
+        active: currentPage == 'prototypes'
+      },
+      {
+        href: "/week-notes",
+        text: "Weeknotes",
+        active: currentPage == 'week-notes'
+      }
+    ]
   }) }}
+  {% block intro %}{% endblock %}
 {% endblock %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
