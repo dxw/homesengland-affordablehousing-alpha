@@ -1,0 +1,49 @@
+
+{% extends "apply/layout.html" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    {% set currentPage = 'partnership' %}
+    {% include "apply/_side-navigation.html" %}
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="">
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "is-partnership",
+        name: "is-partnership",
+        fieldset: {
+          legend: {
+            text: "Are you applying with another organisation?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+      {{ govukButton({
+        text: "Save and continue",
+        href: "#second-question",
+        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

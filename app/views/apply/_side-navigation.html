@@ -1,0 +1,21 @@
+{%- from "moj/components/side-navigation/macro.njk" import mojSideNavigation -%}
+
+{{ mojSideNavigation({
+  label: 'Side navigation',
+  classes: "govuk-!-padding-0",
+  sections: [
+    {
+      heading: {
+      text: 'Apply for affordable housing funding'
+    },
+      items: [
+      {
+        text: 'Partnership',
+        href: '/apply/partnership',
+        active: currentPage == 'partnership'
+      }
+      ]
+    }
+  ]
+
+}) }}
