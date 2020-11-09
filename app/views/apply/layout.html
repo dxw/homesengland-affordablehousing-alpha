@@ -1,0 +1,16 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Apply for affordable housing funding
+{% endblock %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {{ govukHeader({
+      homepageUrl: "/",
+      serviceName: serviceName,
+      serviceUrl: "/apply",
+      containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
