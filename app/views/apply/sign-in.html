@@ -1,0 +1,47 @@
+
+{% extends "apply/layout.html" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Sign in to your account</h1>
+
+    {{ govukInput({
+      label: {
+        text: "Username"
+      },
+      classes: "govuk-input--width-20",
+      id: "username",
+      name: "username"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "Password"
+      },
+      type: "password",
+      classes: "govuk-input--width-20",
+      id: "password",
+      name: "password"
+    }) }}
+
+    <p class="govuk-body">
+      <a href="#forgot" class="govuk-link">Forgot your password?</a>
+    </p>
+
+    {{ govukInsetText({
+      html: "By continuing you accept the <a href=\"#forgot\" class=\"govuk-link\">terms and conditions</a>."
+    }) }}
+
+
+    {{ govukButton({
+      text: "Sign in",
+      href: "#first-question",
+      classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}
