@@ -1,0 +1,48 @@
+
+{% extends "apply/layout.html" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    {% set currentPage = 'why' %}
+    {% include "apply/_side-navigation.html" %}
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="" method="post">
+      {{ govukCharacterCount({
+        name: "why",
+        id: "why",
+        maxlength: 200,
+        label: {
+          text: "Describe why you are bidding",
+          classes: "govuk-label--l",
+          isPageHeading: true
+        },
+        hint: {
+          text: "Briefly explain why you're doing this"
+        }
+      }) }}
+
+      {{ govukCharacterCount({
+        name: "why",
+        id: "why",
+        maxlength: 200,
+        label: {
+          text: "Briefly explain the consequence of this"
+        },
+        text: "Briefly explain why you're doing this"
+      }) }}
+
+      {{ govukButton({
+        text: "Save and continue",
+        type: "submit",
+        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

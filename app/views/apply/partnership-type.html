@@ -1,0 +1,79 @@
+
+{% extends "apply/layout.html" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    {% set currentPage = 'partnership' %}
+    {% include "apply/_side-navigation.html" %}
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    {% set partnerHtml %}
+      {{ govukInput({
+        id: "partner-name",
+        name: "partner-name",
+        spellcheck: false,
+        classes: "govuk-!-width-two-thirds",
+        label: {
+          text: "Who with?"
+        }
+      }) }}
+    {% endset -%}
+
+    <form action="/apply/why" method="get">
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "partnership",
+        name: "partnership",
+        fieldset: {
+          legend: {
+            text: "What type of partnership is it?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "joint",
+            text: "Joint",
+            hint: {
+              text: "Applying with another company"
+            },
+            conditional: {
+              html: partnerHtml
+            }
+          },
+          {
+            value: "consortium",
+            text: "Consortium",
+            hint: {
+              text: "Both responsible for the delivery"
+            },
+            conditional: {
+              html: partnerHtml
+            }
+          },
+          {
+            value: "own",
+            text: "Applying on your own",
+            hint: {
+              text: "but you'll be working with others"
+            }
+          }
+        ]
+      }) }}
+      {{ govukButton({
+        text: "Save and continue",
+        type: "submit",
+        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}
