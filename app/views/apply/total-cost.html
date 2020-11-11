@@ -1,0 +1,125 @@
+
+{% extends "apply/layout.html" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    {% set currentPage = 'region' %}
+    {% include "apply/_side-navigation.html" %}
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Region (1,000 units)</h1>
+
+    <div class="govuk-tabs" >
+      <h2 class="govuk-tabs__title">
+        Region
+      </h2>
+      <ul class="govuk-tabs__list">
+        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+          <a class="govuk-tabs__tab" href="#">
+            Total cost
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#">
+            Funding
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#">
+            Timeline
+          </a>
+        </li>
+      </ul>
+      <div class="govuk-tabs__panel">
+        <form action="" method="get">
+          <h2 class="govuk-heading-m">Weighted average unit cost</h2>
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+              {{ govukInput({
+                label: {
+                  text: "Land"
+                },
+                prefix: {
+                  text: "£"
+                },
+                id: "land",
+                name: "land"
+              }) }}
+            </div>
+            <div class="govuk-grid-column-one-third">
+              {{ govukInput({
+                label: {
+                  text: "Build"
+                },
+                prefix: {
+                  text: "£"
+                },
+                id: "build",
+                name: "build"
+              }) }}
+            </div>
+            <div class="govuk-grid-column-one-third">
+              {{ govukInput({
+                label: {
+                  text: "Fees"
+                },
+                prefix: {
+                  text: "£"
+                },
+                id: "fees",
+                name: "fees"
+              }) }}
+            </div>
+          </div>
+
+          <h3 class="govuk-heading-s">Total cost of the unit</h3>
+          <div class="govuk-inset-text govuk-!-margin-top-0 govuk-!-margin-bottom-7">
+            £ 300,000
+          </div>
+
+          {{ govukInput({
+            label: {
+              text: "Weighted average Gross Development Value (GDV) or open market value",
+              classes: "govuk-label--m"
+            },
+            hint: {
+              text: "The cost of building the home should be lower than the open market value"
+            },
+            prefix: {
+              text: "£"
+            },
+            id: "gdv",
+            name: "gdv",
+            classes: "govuk-!-width-one-third"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Amount of grant you need per unit",
+              classes: "govuk-label--m"
+            },
+            hint: {
+              text: ""
+            },
+            prefix: {
+              text: "£"
+            },
+            id: "average-grant-per-unit",
+            name: "average-grant-per-unit",
+            classes: "govuk-!-width-one-third"
+          }) }}
+
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
