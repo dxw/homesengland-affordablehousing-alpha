@@ -1,0 +1,72 @@
+
+{% extends "apply/layout.html" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    {% set currentPage = 'homes-location' %}
+    {% include "apply/_side-navigation.html" %}
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/apply/what-tenures" method="get">
+      {{ govukCheckboxes({
+        idPrefix: "homes-locations",
+        name: "homes-locations",
+        fieldset: {
+          legend: {
+            text: "Where will be the homes located?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "South East",
+            text: "South East"
+          },
+          {
+            value: "North East",
+            text: "North East"
+          },
+          {
+            value: "North West",
+            text: "North West"
+          },
+          {
+            value: "East of England",
+            text: "East of England"
+          },
+          {
+            value: "East Midlands",
+            text: "East Midlands"
+          },
+          {
+            value: "West Midlands",
+            text: "West Midlands"
+          },
+          {
+            value: "South West",
+            text: "South West"
+          },
+          {
+            value: "Yorkshire and the Humber",
+            text: "Yorkshire and the Humber"
+          }
+        ]
+      }) }}
+      {{ govukButton({
+        text: "Save and continue",
+        type: "submit",
+        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

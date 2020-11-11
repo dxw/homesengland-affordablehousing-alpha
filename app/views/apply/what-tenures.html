@@ -1,0 +1,118 @@
+
+{% extends "apply/layout.html" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    {% set currentPage = 'what-tenures' %}
+    {% include "apply/_side-navigation.html" %}
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">What tenures?</h1>
+    <p class="govuk-body">Select amount of tenures and specify the amount of homes</p>
+
+    <form action="" method="post" novalidate>
+      {% for region in data['homes-locations'] %}
+        {{ govukCheckboxes({
+          idPrefix: "tenures-" + region | parameterize,
+          name: "tenures[" + region + "]",
+          fieldset: {
+            legend: {
+              text: region,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "Social rent",
+              text: "Social rent",
+              conditional: {
+                html: govukInput({
+                  id: "social-rent-"+ region | parameterize,
+                  name: "units[" + region + "][Social rent]",
+                  spellcheck: false,
+                  classes: "govuk-!-width-one-third",
+                  label: {
+                    text: "How many units?"
+                  }
+                })
+              }
+            },
+            {
+              value: "Affordable rent",
+              text: "Affordable rent",
+              conditional: {
+                html: govukInput({
+                  id: "affordable-rent-"+ region | parameterize,
+                  name: "units[" + region + "][Affordable rent]",
+                  spellcheck: false,
+                  classes: "govuk-!-width-one-third",
+                  label: {
+                    text: "How many units?"
+                  }
+                })
+              }
+            },
+            {
+              value: "Shared ownership",
+              text: "Shared ownership",
+              conditional: {
+                html: govukInput({
+                  id: "shared-ownership-"+ region | parameterize,
+                  name: "units[" + region + "][Shared ownership]",
+                  spellcheck: false,
+                  classes: "govuk-!-width-one-third",
+                  label: {
+                    text: "How many units?"
+                  }
+                })
+              }
+            },
+            {
+              value: "Rent to buy",
+              text: "Rent to buy",
+              conditional: {
+                html: govukInput({
+                  id: "rent-to-buy-"+ region | parameterize,
+                  name: "units[" + region + "][Rent to buy]",
+                  spellcheck: false,
+                  classes: "govuk-!-width-one-third",
+                  label: {
+                    text: "How many units?"
+                  }
+                })
+              }
+            },
+            {
+              value: "Supported housing",
+              text: "Supported housing",
+              conditional: {
+                html: govukInput({
+                  id: "supported-housing-"+ region | parameterize,
+                  name: "units[" + region + "][Supported housing]",
+                  spellcheck: false,
+                  classes: "govuk-!-width-one-third",
+                  label: {
+                    text: "How many units?"
+                  }
+                })
+              }
+            }
+          ]
+        }) }}
+      {% endfor %}
+      {{ govukButton({
+        text: "Save and continue",
+        type: "submit",
+        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}
