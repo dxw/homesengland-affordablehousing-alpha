@@ -7,4 +7,12 @@ if (window.console && window.console.info) {
 
 $(document).ready(function () {
   window.GOVUKFrontend.initAll()
+
+  $('.calculate-total input').on('change', function () {
+    let total = 0
+    $('.calculate-total input').each(function () {
+      total += Number($(this).val())
+    })
+    $('.cost-total').removeClass('govuk-visually-hidden').find('span').text(total.toLocaleString())
+  })
 })

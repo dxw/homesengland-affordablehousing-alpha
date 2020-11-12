@@ -40,7 +40,7 @@
         <form action="/apply/regions" method="post">
           <h2 class="govuk-heading-m">Weighted average unit cost</h2>
 
-          <div class="govuk-grid-row">
+          <div class="govuk-grid-row calculate-total">
             <div class="govuk-grid-column-one-third">
               {{ govukInput({
                 label: {
@@ -79,9 +79,11 @@
             </div>
           </div>
 
-          <h3 class="govuk-heading-s">Total cost of the unit</h3>
-          <div class="govuk-inset-text govuk-!-margin-top-0 govuk-!-margin-bottom-7">
-            £ 300,000
+          <div class="cost-total govuk-visually-hidden">
+            <h3 class="govuk-heading-s">Total cost of the unit</h3>
+            <div class="govuk-inset-text govuk-!-margin-top-0 govuk-!-margin-bottom-7">
+              £ <span>0</span>
+            </div>
           </div>
 
           {{ govukInput({
