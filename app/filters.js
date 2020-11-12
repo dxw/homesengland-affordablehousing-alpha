@@ -42,6 +42,15 @@ module.exports = function (env) {
     return name.trim().toLowerCase().replace(/[^a-zA-Z0-9 -]/, '').replace(/\s/g, '-')
   }
 
+  filters.removeEmpty = function (obj) {
+    for (let propName in obj) {
+      if (obj[propName] === null || obj[propName] === undefined || obj[propName] === '') {
+        delete obj[propName]
+      }
+    }
+    return obj
+  }
+
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */

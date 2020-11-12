@@ -1,0 +1,96 @@
+
+{% extends "apply/layout.html" %}
+
+{% block content %}
+
+{% set region = 'South East' %}
+{% set unitsInRegion = data['units'][region] %}
+{% set fundingYears = ['2021', '2022', '2023', '2023', '2024', '2025'] %}
+{% set quarters = ['Q1', 'Q2', 'Q3', 'Q4'] %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    {% set currentPage = 'region' %}
+    {% include "apply/_side-navigation.html" %}
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Region (1,000 units)</h1>
+
+    <div class="govuk-tabs" >
+      <h2 class="govuk-tabs__title">
+        Region
+      </h2>
+      <ul class="govuk-tabs__list">
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#">
+            Total cost
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#">
+            Funding
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+          <a class="govuk-tabs__tab" href="#">
+            Timeline
+          </a>
+        </li>
+      </ul>
+      <div class="govuk-tabs__panel">
+        <form action="" method="get">
+          <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+            {% for year in fundingYears %}
+            <div class="govuk-accordion__section ">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="accordion-default-heading-{{ year }}">
+                    In {{ year }}
+                  </span>
+                </h2>
+              </div>
+              <div id="accordion-default-content-{{ year }}" class="govuk-accordion__section-content"
+                   aria-labelledby="accordion-default-heading-{{ year }}">
+                {% for type, amount in unitsInRegion | removeEmpty %}
+                <h2 class="govuk-heading-m">{{ type }} ({{ amount }} units)</h2>
+
+                {% for quarter in quarters %}
+                  <p class='govuk-body'>{{ quarter }}</p>
+                  <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-half">
+                      {{ govukInput({
+                        label: {
+                          text: "Units started"
+                        },
+                        id: "timeline-"+year+"-"+quarter+"-units-started",
+                        name: "timeline["+region+"]["+year+"]["+quarter+"][Units started]"
+                      }) }}
+                    </div>
+                    <div class="govuk-grid-column-one-half">
+                      {{ govukInput({
+                        label: {
+                          text: "Units completed"
+                        },
+                        id: "timeline-"+year+"-"+quarter+"-units-completed",
+                        name: "timeline["+region+"]["+year+"]["+quarter+"][Units completed]"
+                      }) }}
+                    </div>
+                  </div>
+                {% endfor %}
+              {% endfor %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
