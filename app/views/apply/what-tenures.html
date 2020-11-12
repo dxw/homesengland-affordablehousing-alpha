@@ -13,7 +13,7 @@
     <h1 class="govuk-heading-l">What tenures?</h1>
     <p class="govuk-body">Select amount of tenures and specify the amount of homes</p>
 
-    <form action="/apply/total-cost" method="post" novalidate>
+    <form action="/apply/regions" method="post" novalidate>
       {% for region in data['homes-locations'] %}
         {{ govukCheckboxes({
           idPrefix: "tenures-" + region | parameterize,

@@ -51,6 +51,17 @@ module.exports = function (env) {
     return obj
   }
 
+  filters.sumOfValues = function (obj) {
+    let sum = 0
+    for (const num in obj) {
+      const value = parseInt(obj[num])
+      if (!isNaN(value)) {
+        sum += value
+      }
+    }
+    return sum
+  }
+
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */

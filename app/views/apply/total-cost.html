@@ -3,6 +3,10 @@
 
 {% block content %}
 
+{% set region = query.region %}
+{% set unitsInRegion = data['units'][region] %}
+{% set totalUnits = unitsInRegion | sumOfValues  %}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-one-third">
     {% set currentPage = 'region' %}
@@ -10,31 +14,30 @@
   </div>
 
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">Region (1,000 units)</h1>
-
+    <h1 class="govuk-heading-l">{{ region }} ({{ totalUnits }} units)</h1>
     <div class="govuk-tabs" >
       <h2 class="govuk-tabs__title">
         Region
       </h2>
       <ul class="govuk-tabs__list">
         <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-          <a class="govuk-tabs__tab" href="#">
+          <a class="govuk-tabs__tab" href="/apply/total-cost?region={{ region }}">
             Total cost
           </a>
         </li>
         <li class="govuk-tabs__list-item">
-          <a class="govuk-tabs__tab" href="#">
+          <a class="govuk-tabs__tab" href="/apply/funding?region={{ region }}">
             Funding
           </a>
         </li>
         <li class="govuk-tabs__list-item">
-          <a class="govuk-tabs__tab" href="#">
+          <a class="govuk-tabs__tab" href="/apply/timeline?region={{ region }}">
             Timeline
           </a>
         </li>
       </ul>
       <div class="govuk-tabs__panel">
-        <form action="/apply/funding" method="get">
+        <form action="/apply/regions" method="post">
           <h2 class="govuk-heading-m">Weighted average unit cost</h2>
 
           <div class="govuk-grid-row">
@@ -47,7 +50,7 @@
                   text: "£"
                 },
                 id: "land",
-                name: "land"
+                name: "costs["+region+"][land]"
               }) }}
             </div>
             <div class="govuk-grid-column-one-third">
@@ -59,7 +62,7 @@
                   text: "£"
                 },
                 id: "build",
-                name: "build"
+                name: "costs["+region+"][build]"
               }) }}
             </div>
             <div class="govuk-grid-column-one-third">
@@ -71,7 +74,7 @@
                   text: "£"
                 },
                 id: "fees",
-                name: "fees"
+                name: "costs["+region+"][fees]"
               }) }}
             </div>
           </div>
@@ -93,7 +96,7 @@
               text: "£"
             },
             id: "gdv",
-            name: "gdv",
+            name: "costs["+region+"][gdv]",
             classes: "govuk-!-width-one-third"
           }) }}
 
@@ -109,9 +112,12 @@
               text: "£"
             },
             id: "average-grant-per-unit",
-            name: "average-grant-per-unit",
+            name: "costs["+region+"][average-grant-per-unit]",
             classes: "govuk-!-width-one-third"
           }) }}
+
+          <input type="hidden" name="currentTab" value="total-cost">
+          <input type="hidden" name="region" value="{{ query.region }}">
 
           {{ govukButton({
             text: "Save and continue"
