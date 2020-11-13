@@ -6,6 +6,11 @@
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-two-thirds">
+    {{ govukBackLink({
+      text: "Back",
+      href: "/apply/partnership"
+    }) }}
+
     {% set partnerHtml %}
       {{ govukInput({
         id: "partner-name",
