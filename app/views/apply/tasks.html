@@ -11,7 +11,8 @@
     </h1>
 
     <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
-    <p class="govuk-body govuk-!-margin-bottom-7">You have completed 0 of 6 sections.</p>
+    {% set completed = data['tasks'] | filterStatus('completed')  %}
+    <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{ completed | length }} of 6 sections.</p>
 
     <ol class="app-task-list">
       <li>

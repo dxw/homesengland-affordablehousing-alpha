@@ -1,3 +1,5 @@
+const _ = require('lodash')
+
 module.exports = function (env) {
   /**
    * Instantiate object used to store the methods registered as a
@@ -49,6 +51,10 @@ module.exports = function (env) {
       }
     }
     return obj
+  }
+
+  filters.filterStatus = function (obj, status) {
+    return _.filter(obj, function (item) { return item === status })
   }
 
   filters.sumOfValues = function (obj) {

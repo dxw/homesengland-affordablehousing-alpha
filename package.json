@@ -38,6 +38,7 @@
     "gulp-sourcemaps": "^2.6.0",
     "inquirer": "^7.1.0",
     "keypather": "^3.0.0",
+    "lodash": "^4.17.20",
     "marked": "^0.8.2",
     "notifications-node-client": "^4.7.2",
     "nunjucks": "^3.2.1",
