@@ -7,7 +7,7 @@
 
   <div class="govuk-grid-column-two-thirds">
 
-    <form action="/apply/what-tenures" method="get">
+    <form action="/apply/tasks" method="get">
       {{ govukCheckboxes({
         idPrefix: "homes-locations",
         name: "homes-locations",
@@ -56,6 +56,8 @@
           }
         ]
       }) }}
+      <input type="hidden" name="tasks[homesLocation]" value="completed">
+      <input type="hidden" name="tasks[tenures]" value="not_started">
       {{ govukButton({
         text: "Save and continue",
         type: "submit",

@@ -1,5 +1,6 @@
 
 {% extends "apply/layout.html" %}
+{% from "apply/_macros.html" import taskStatus %}
 
 {% block content %}
 
@@ -24,7 +25,7 @@
                 Check eligibility
               </a>
             </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Not started</strong>
+            {{ taskStatus('checkEligibility', data['tasks']) }}
           </li>
         </ul>
       </li>
@@ -40,7 +41,7 @@
                 Who you’re delivering with
               </a>
             </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Not started</strong>
+            {{ taskStatus('partnership', data['tasks']) }}
           </li>
         </ul>
       </li>
@@ -56,19 +57,23 @@
                 Where the homes will be located
               </a>
             </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Not started</strong>
+            {{ taskStatus('homesLocation', data['tasks']) }}
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
+              {% if 'tenures' in data['tasks'] %}<a href="/apply/what-tenures">{% endif %}
               Which tenures you’ll be building
+              {% if 'tenures' in data['tasks'] %}</a>{% endif %}
             </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Cannot start yet</strong>
+            {{ taskStatus('tenures', data['tasks']) }}
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
+              {% if 'costsFundingTimeline' in data['tasks'] %}<a href="/apply/regions">{% endif %}
               Costs, funding and timeline
+              {% if 'costsFundingTimeline' in data['tasks'] %}</a>{% endif %}
             </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Cannot start yet</strong>
+            {{ taskStatus('costsFundingTimeline', data['tasks']) }}
           </li>
         </ul>
       </li>
@@ -82,7 +87,7 @@
             <span class="app-task-list__task-name">
               Submit application
             </span>
-            <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Cannot start yet</strong>
+            {{ taskStatus('submitApplication', data['tasks']) }}
           </li>
         </ul>
       </li>

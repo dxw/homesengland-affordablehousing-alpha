@@ -1,0 +1,11 @@
+{% macro taskStatus(name, tasks) %}
+  {% if tasks[name] == 'completed' %}
+    <strong class="govuk-tag app-task-list__tag">Completed</strong>
+  {% elseif tasks[name] == 'in_progress' %}
+    <strong class="govuk-tag govuk-tag--blue app-task-list__tag">In progress</strong>
+  {% elseif tasks[name] == 'not_started' %}
+    <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Not started</strong>
+  {% else %}
+    <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Cannot start yet</strong>
+  {% endif %}
+{% endmacro %}
