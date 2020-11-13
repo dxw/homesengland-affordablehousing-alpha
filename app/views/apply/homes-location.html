@@ -61,7 +61,7 @@
         ]
       }) }}
       <input type="hidden" name="tasks[homesLocation]" value="completed">
-      <input type="hidden" name="tasks[tenures]" value="not_started">
+      <input type="hidden" name="tasks[tenures]" value="{{ data.tasks.tenures | d('not_started') }}">
       {{ govukButton({
         text: "Save and continue",
         type: "submit",
