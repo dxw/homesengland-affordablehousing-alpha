@@ -12,7 +12,7 @@ router.post('/apply/partnership', function (req, res) {
   if (req.body['is-partnership'] === 'yes') {
     return res.redirect('/apply/partnership-type')
   } else {
-    return res.redirect('/apply/why')
+    return res.redirect('/apply/tasks')
   }
 })
 
@@ -36,7 +36,7 @@ router.post('/apply/regions', function (req, res) {
 
   // No more regions left to input data for so redirect to the next page in the journey
   if (region === undefined) {
-    return res.redirect('/apply/affordable-housing-metrics')
+    return res.redirect('/apply/tasks')
   }
 
   return res.redirect('/apply/' + nextTab + '?region=' + region)
