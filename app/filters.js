@@ -45,12 +45,7 @@ module.exports = function (env) {
   }
 
   filters.removeEmpty = function (obj) {
-    for (let propName in obj) {
-      if (obj[propName] === null || obj[propName] === undefined || obj[propName] === '') {
-        delete obj[propName]
-      }
-    }
-    return obj
+    return _.reject(obj, function (item) { return item === null || item === undefined || item === '' })
   }
 
   filters.filterStatus = function (obj, status) {
@@ -58,14 +53,9 @@ module.exports = function (env) {
   }
 
   filters.sumOfValues = function (obj) {
-    let sum = 0
-    for (const num in obj) {
-      const value = parseInt(obj[num])
-      if (!isNaN(value)) {
-        sum += value
-      }
-    }
-    return sum
+    return _.reduce(obj, function (sum, n) {
+      return sum + n
+    }, 0)
   }
 
   /* ------------------------------------------------------------------
