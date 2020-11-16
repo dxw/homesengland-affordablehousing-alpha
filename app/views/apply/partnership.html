@@ -33,15 +33,7 @@
               value: "yes",
               text: "Yes",
               conditional: {
-                html: govukInput({
-                  id: "partner-name",
-                  name: "partner-name",
-                  spellcheck: false,
-                  classes: "govuk-!-width-two-thirds",
-                  label: {
-                    text: "Who with?"
-                  }
-                })
+                html: '<label for="partner-name" class="govuk-label">Who with?</label><div id="partner-name-container"></div>'
               }
             },
             {
@@ -60,4 +52,41 @@
   </div>
 </div>
 
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    accessibleAutocomplete({
+      element: document.querySelector('#partner-name-container'),
+      id: 'partner-name',
+      displayMenu: 'overlay',
+      source: [
+        'EMH group',
+        'Great Places',
+        'Home Group',
+        'Hyde',
+        'L&Q',
+        'Accord',
+        'Places for People',
+        'Sovereign & LiveWest',
+        'Subtotal',
+        'Platform',
+        'Guinness & Stonewater',
+        'Optivo',
+        'Orbit',
+        'Southern',
+        'Thirteen',
+        'Vivid',
+        'Subtotal',
+        'Bromford',
+        'Curo & Swan',
+        'LMH/Torus',
+        'Together',
+        'Yorkshire',
+        'Your',
+        'Walsall',
+        'Longhurst & NCHA'
+      ]
+    })
+  </script>
 {% endblock %}

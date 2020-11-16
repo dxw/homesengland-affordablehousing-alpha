@@ -34,3 +34,8 @@ $govuk-assets-path: '/govuk/assets/';
     color: govuk-colour("white");
   }
 }
+
+.autocomplete__option {
+  @extend .govuk-body;
+  margin: 0;
+}
