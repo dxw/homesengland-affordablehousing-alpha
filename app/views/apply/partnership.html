@@ -12,36 +12,50 @@
     }) }}
 
     <form action="" method="post">
-      {{ govukRadios({
-        classes: "govuk-radios--inline",
-        idPrefix: "is-partnership",
-        name: "is-partnership",
-        fieldset: {
-          legend: {
-            text: "Are you applying with another organisation?",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--l"
-          }
-        },
-        hint: {
-          text: ""
-        },
-        items: [
-          {
-            value: "yes",
-            text: "Yes"
+
+      <form action="/apply/tasks" method="get">
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "partnership",
+          name: "partnership",
+          fieldset: {
+            legend: {
+              text: "Are you applying for affordable housing grant funding with another organisation?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
           },
-          {
-            value: "no",
-            text: "No"
-          }
-        ]
-      }) }}
-      {{ govukButton({
-        text: "Save and continue",
-        type: "submit",
-        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8"
-      }) }}
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes",
+              conditional: {
+                html: govukInput({
+                  id: "partner-name",
+                  name: "partner-name",
+                  spellcheck: false,
+                  classes: "govuk-!-width-two-thirds",
+                  label: {
+                    text: "Who with?"
+                  }
+                })
+              }
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+        <input type="hidden" name="tasks[partnership]" value="completed">
+        {{ govukButton({
+          text: "Save and continue",
+          type: "submit",
+          classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+        }) }}
     </form>
   </div>
 </div>
