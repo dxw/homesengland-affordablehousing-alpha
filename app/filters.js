@@ -54,7 +54,7 @@ module.exports = function (env) {
 
   filters.sumOfValues = function (obj) {
     return _.reduce(obj, function (sum, n) {
-      return sum + n
+      return (parseInt(n) > 0) ? sum + parseInt(n) : sum
     }, 0)
   }
 
