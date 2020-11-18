@@ -106,9 +106,10 @@
             }
           ]
         }) }}
+        <input type="hidden" name="tasks[funding-{{ region | parameterize }}]" value="{{ data.tasks['funding-'+ region | parameterize] | d('not_started') }}">
+        <input type="hidden" name="tasks[totalCost-{{ region | parameterize }}]" value="{{ data.tasks['totalCost-'+ region | parameterize] | d('not_started') }}">
       {% endfor %}
       <input type="hidden" name="tasks[tenures]" value="completed">
-      <input type="hidden" name="tasks[costsFundingTimeline]" value="{{ data.tasks.costsFundingTimeline | d('not_started') }}">
       {{ govukButton({
         text: "Save and continue",
         type: "submit",

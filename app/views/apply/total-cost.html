@@ -18,7 +18,7 @@
     <h1 class="govuk-heading-l">Total cost</h1>
     <h2 class="govuk-heading-m">{{ region }} ({{ totalHomes }} homes)</h2>
 
-    <form action="/apply/regions" method="post">
+    <form action="/apply/tasks" method="post">
       <h2 class="govuk-heading-m">Weighted average home cost</h2>
 
       <div class="govuk-grid-row calculate-total">
@@ -99,8 +99,7 @@
         classes: "govuk-!-width-one-third"
       }) }}
 
-      <input type="hidden" name="currentTab" value="total-cost">
-      <input type="hidden" name="region" value="{{ query.region }}">
+      <input type="hidden" name="tasks[totalCost-{{ region | parameterize }}]" value="completed">
 
       {{ govukButton({
         text: "Save and continue"

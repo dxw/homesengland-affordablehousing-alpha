@@ -17,7 +17,7 @@
     <h1 class="govuk-heading-l">Funding</h1>
     <h2 class="govuk-heading-m">{{ region }} ({{ totalHomes }} homes)</h2>
 
-    <form action="/apply/regions" method="post">
+    <form action="/apply/tasks" method="post">
       {{ govukCheckboxes({
         idPrefix: "capital-funding",
         name: "capital-funding",
@@ -258,8 +258,7 @@
           name: "funding["+region+"][Impact on sales exposure]"
       }) }}
 
-      <input type="hidden" name="currentTab" value="funding">
-      <input type="hidden" name="region" value="{{ query.region }}">
+      <input type="hidden" name="tasks[funding-{{ region | parameterize }}]" value="completed">
 
       {{ govukButton({
         text: "Save and continue"

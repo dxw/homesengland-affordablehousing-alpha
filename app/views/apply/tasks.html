@@ -68,14 +68,26 @@
             </span>
             {{ taskStatus('tenures', data['tasks']) }}
           </li>
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              {% if 'costsFundingTimeline' in data['tasks'] %}<a href="/apply/regions">{% endif %}
-              Costs and funding
-              {% if 'costsFundingTimeline' in data['tasks'] %}</a>{% endif %}
-            </span>
-            {{ taskStatus('costsFundingTimeline', data['tasks']) }}
-          </li>
+          {% if data['tasks']['homesLocation'] == 'completed' %}
+            {% for region in data['homes-locations'] %}
+              <li class="app-task-list__item">
+                <span class="app-task-list__task-name">
+                  {% if 'totalCost-' + region | parameterize in data['tasks'] %}<a href="/apply/total-cost?region={{ region }}">{% endif %}
+                    {{ region }} - Define costs
+                  {% if 'totalCost' + region | parameterize in data['tasks'] %}</a>{% endif %}
+                </span>
+                {{ taskStatus('totalCost-' + region | parameterize, data['tasks']) }}
+              </li>
+              <li class="app-task-list__item">
+                <span class="app-task-list__task-name">
+                  {% if 'funding-' + region | parameterize in data['tasks'] %}<a href="/apply/funding?region={{ region }}">{% endif %}
+                    {{ region }} - Define funding
+                  {% if 'funding-' + region | parameterize in data['tasks'] %}</a>{% endif %}
+                </span>
+                {{ taskStatus('funding-' + region | parameterize, data['tasks']) }}
+              </li>
+            {% endfor %}
+          {% endif %}
         </ul>
       </li>
 
