@@ -3,9 +3,6 @@
 
 {% block content %}
 
-{% set region = query.region %}
-{% set homesInRegion = data['homes'][region] %}
-{% set totalHomes = homesInRegion | sumOfValues  %}
 {% set fundingYears = ['2021', '2022', '2023', '2023', '2024', '2025'] %}
 {% set quarters = ['Q1', 'Q2', 'Q3', 'Q4'] %}
 
@@ -17,9 +14,9 @@
       href: "/apply/tasks"
     }) }}
 
-    <h1 class="govuk-heading-l">{{ region }} ({{ totalHomes }} homes)</h1>
+    <h1 class="govuk-heading-l">Delivery timeline</h1>
 
-    <form action="/apply/regions" method="post">
+    <form action="/apply/tasks" method="post">
       <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
         {% for year in fundingYears %}
         <div class="govuk-accordion__section ">
@@ -32,8 +29,6 @@
           </div>
           <div id="accordion-default-content-{{ year }}" class="govuk-accordion__section-content"
                aria-labelledby="accordion-default-heading-{{ year }}">
-            {% for type, amount in homesInRegion | removeEmpty %}
-            <h2 class="govuk-heading-m">{{ type }} ({{ amount }} homes)</h2>
 
             {% for quarter in quarters %}
               <p class='govuk-body'>{{ quarter }}</p>
@@ -44,7 +39,7 @@
                       text: "Homes started"
                     },
                     id: "timeline-"+year+"-"+quarter+"-homes-started",
-                    name: "timeline["+region+"]["+year+"]["+quarter+"][Homes started]"
+                    name: "timeline["+year+"]["+quarter+"][Homes started]"
                   }) }}
                 </div>
                 <div class="govuk-grid-column-one-half">
@@ -53,19 +48,17 @@
                       text: "Homes completed"
                     },
                     id: "timeline-"+year+"-"+quarter+"-homes-completed",
-                    name: "timeline["+region+"]["+year+"]["+quarter+"][Homes completed]"
+                    name: "timeline["+year+"]["+quarter+"][Homes completed]"
                   }) }}
                 </div>
               </div>
             {% endfor %}
-          {% endfor %}
           </div>
         </div>
         {% endfor %}
       </div>
 
-      <input type="hidden" name="currentTab" value="timeline">
-      <input type="hidden" name="region" value="{{ query.region }}">
+      <input type="hidden" name="tasks[programmeTimeline]" value="completed">
 
       {{ govukButton({
         text: "Save and continue"

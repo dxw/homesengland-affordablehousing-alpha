@@ -22,7 +22,8 @@ module.exports = {
   tasks: {
     checkEligibility: 'not_started',
     partnership: 'not_started',
-    homesLocation: 'not_started'
+    homesLocation: 'not_started',
+    programmeTimeline: 'not_started'
   }
 
 }

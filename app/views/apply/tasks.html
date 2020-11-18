@@ -71,7 +71,7 @@
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               {% if 'costsFundingTimeline' in data['tasks'] %}<a href="/apply/regions">{% endif %}
-              Costs, funding and timeline
+              Costs and funding
               {% if 'costsFundingTimeline' in data['tasks'] %}</a>{% endif %}
             </span>
             {{ taskStatus('costsFundingTimeline', data['tasks']) }}
@@ -81,7 +81,23 @@
 
       <li>
         <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">4. </span> Apply
+          <span class="app-task-list__section-number">4. </span> Delivery forecast
+        </h2>
+        <ul class="app-task-list__items">
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="/apply/timeline">
+                Programme timeline
+              </a>
+            </span>
+            {{ taskStatus('programmeTimeline', data['tasks']) }}
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">5. </span> Apply
         </h2>
         <ul class="app-task-list__items">
           <li class="app-task-list__item">

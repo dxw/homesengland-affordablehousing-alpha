@@ -20,7 +20,7 @@ router.post('/apply/partnership', function (req, res) {
 
 router.all('/apply/regions', function (req, res) {
   const regions = req.session.data['homes-locations']
-  const tabs = ['total-cost', 'funding', 'timeline']
+  const tabs = ['total-cost', 'funding']
 
   const currentTab = req.body.currentTab
   let region = req.body.region
