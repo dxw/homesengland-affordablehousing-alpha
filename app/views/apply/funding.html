@@ -14,9 +14,249 @@
       text: "Back",
       href: "/apply/tasks"
     }) }}
-    <h1 class="govuk-heading-l">{{ region }} ({{ totalHomes }} homes)</h1>
+    <h1 class="govuk-heading-l">Funding</h1>
+    <h2 class="govuk-heading-m">{{ region }} ({{ totalHomes }} homes)</h2>
 
     <form action="/apply/regions" method="post">
+      {{ govukCheckboxes({
+        idPrefix: "capital-funding",
+        name: "capital-funding",
+        fieldset: {
+          legend: {
+            text: "Capital funding",
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "Debt funding supportable from net rental income",
+            text: "Debt funding supportable from net rental income",
+            conditional: {
+              html: govukInput({
+                label: {
+                  text: "How much?"
+                },
+                prefix: {
+                  text: "£"
+                },
+                id: "funding-debt-funding",
+                classes: "govuk-input--width-5",
+                name: "funding["+region+"][Debt funding supportable from net rental income]"
+              })
+            }
+          },
+          {
+            value: "Other debt funding",
+            text: "Other debt funding",
+            conditional: {
+              html:
+                govukInput({
+                  label: {
+                    text: "Details"
+                  },
+                  id: "funding-other-debt-funding-details",
+                  classes: "govuk-input--width-20",
+                  name: "funding["+region+"][Other debt funding details]"
+                }) +
+                govukInput({
+                  label: {
+                    text: "How much?"
+                  },
+                  prefix: {
+                    text: "£"
+                  },
+                  id: "funding-other-debt-funding",
+                  classes: "govuk-input--width-5",
+                  name: "funding["+region+"][Other debt funding]"
+                })
+            }
+          },
+          {
+            value: "Cross subsidy from open market sales (OMS)",
+            text: "Cross subsidy from open market sales (OMS)",
+            hint: {
+              text: "Any profit from OMS (assume is open market sales) that will be used to fund new supply"
+            },
+            conditional: {
+              html: govukInput({
+                label: {
+                  text: "How much?"
+                },
+                prefix: {
+                  text: "£"
+                },
+                id: "funding-oms-cross-subsidy",
+                classes: "govuk-input--width-5",
+                name: "funding["+region+"][Cross subsidy from open market sales]"
+              })
+            }
+          },
+          {
+            value: "Revenue from grant funded first tranche sales",
+            text: "Revenue from grant funded first tranche sales",
+            conditional: {
+              html: govukInput({
+                label: {
+                  text: "How much?"
+                },
+                prefix: {
+                  text: "£"
+                },
+                id: "funding-grant-funded-first-tranche-sales",
+                classes: "govuk-input--width-5",
+                name: "funding["+region+"][Revenue from grant funded first tranche sales]"
+              })
+            }
+          },
+          {
+            value: "Other cross subsidy",
+            text: "Other cross subsidy",
+            conditional: {
+              html: govukInput({
+                label: {
+                  text: "How much?"
+                },
+                prefix: {
+                  text: "£"
+                },
+                id: "funding-other-cross-subsidy",
+                classes: "govuk-input--width-5",
+                name: "funding["+region+"][Other cross subsidy]"
+              })
+            }
+          },
+          {
+            value: "Other internal subsidy",
+            text: "Other internal subsidy",
+            conditional: {
+              html: govukInput({
+                label: {
+                  text: "How much?"
+                },
+                prefix: {
+                  text: "£"
+                },
+                id: "funding-other-internal-subsidy",
+                classes: "govuk-input--width-5",
+                name: "funding["+region+"][Other internal subsidy]"
+              })
+            }
+          },
+          {
+            value: "New Homes England grant",
+            text: "New Homes England grant",
+            conditional: {
+              html: govukInput({
+                label: {
+                  text: "How much?"
+                },
+                prefix: {
+                  text: "£"
+                },
+                id: "funding-new-homes-england-grant",
+                classes: "govuk-input--width-5",
+                name: "funding["+region+"][New Homes England grant]"
+              })
+            }
+          },
+          {
+            value: "Recycled Capital Grant Fund (RCGF)",
+            text: "Recycled Capital Grant Fund (RCGF)",
+            conditional: {
+              html: govukInput({
+                label: {
+                  text: "How much?"
+                },
+                prefix: {
+                  text: "£"
+                },
+                id: "funding-recycled-rcgf",
+                classes: "govuk-input--width-5",
+                name: "funding["+region+"][Recycled Capital Grant Fund (RCGF)]"
+              })
+            }
+          },
+          {
+            value: "Other public subsidy",
+            text: "Other public subsidy",
+            conditional: {
+              html: govukInput({
+                label: {
+                  text: "How much?"
+                },
+                prefix: {
+                  text: "£"
+                },
+                id: "funding-other-public-subsidy",
+                classes: "govuk-input--width-5",
+                name: "funding["+region+"][Other public subsidy]"
+              })
+            }
+          },
+          {
+            value: "Other sources of funding",
+            text: "Other sources of funding",
+            conditional: {
+              html: govukInput({
+                label: {
+                  text: "Details"
+                },
+                id: "funding-other-funding-sources-details",
+                classes: "govuk-input--width-20",
+                name: "funding["+region+"][Other sources of funding details]"
+              }) +
+              govukInput({
+                label: {
+                  text: "How much?"
+                },
+                prefix: {
+                  text: "£"
+                },
+                id: "funding-other-funding-sources",
+                classes: "govuk-input--width-5",
+                name: "funding["+region+"][Other sources of funding]"
+              })
+            }
+          }
+        ]
+      }) }}
+
+      <h3 class="govuk-heading-s">Business Plan effect of Strategic Partnership</h3>
+      {{ govukInput({
+          label: {
+            text: "Impact on EBITDA - MRI interest cover of the Strategic Partnership to March 2029"
+          },
+          id: "impact-on-ebitda",
+          classes: "govuk-input--width-20",
+          name: "funding["+region+"][Impact on EBITDA - MRI interest cover of the Strategic Partnership to March 2029]"
+      }) }}
+
+      {{ govukInput({
+          label: {
+            text: "Impact on gearing of the Strategic Partnership to March 2029 "
+          },
+          id: "impact-on-gearing",
+          classes: "govuk-input--width-20",
+          name: "funding["+region+"][Impact on gearing of the Strategic Partnership to March 2029]"
+      }) }}
+
+      {{ govukInput({
+          label: {
+            text: "Impact of Strategic Partnership on credit rating"
+          },
+          id: "impact-on-credit-rating",
+          classes: "govuk-input--width-20",
+          name: "funding["+region+"][Impact of Strategic Partnership on credit rating]"
+      }) }}
+
+      {{ govukInput({
+          label: {
+            text: "Impact on sales exposure"
+          },
+          id: "impact-on-sales-exposure",
+          classes: "govuk-input--width-20",
+          name: "funding["+region+"][Impact on sales exposure]"
+      }) }}
 
       <input type="hidden" name="currentTab" value="funding">
       <input type="hidden" name="region" value="{{ query.region }}">
