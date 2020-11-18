@@ -16,118 +16,95 @@
     }) }}
 
     <h1 class="govuk-heading-l">{{ region }} ({{ totalHomes }} homes)</h1>
-    <div class="govuk-tabs" >
-      <h2 class="govuk-tabs__title">
-        Region
-      </h2>
-      <ul class="govuk-tabs__list">
-        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-          <a class="govuk-tabs__tab" href="/apply/total-cost?region={{ region }}">
-            Total cost
-          </a>
-        </li>
-        <li class="govuk-tabs__list-item">
-          <a class="govuk-tabs__tab" href="/apply/funding?region={{ region }}">
-            Funding
-          </a>
-        </li>
-        <li class="govuk-tabs__list-item">
-          <a class="govuk-tabs__tab" href="/apply/timeline?region={{ region }}">
-            Timeline
-          </a>
-        </li>
-      </ul>
-      <div class="govuk-tabs__panel">
-        <form action="/apply/regions" method="post">
-          <h2 class="govuk-heading-m">Weighted average home cost</h2>
 
-          <div class="govuk-grid-row calculate-total">
-            <div class="govuk-grid-column-one-third">
-              {{ govukInput({
-                label: {
-                  text: "Land"
-                },
-                prefix: {
-                  text: "£"
-                },
-                id: "land",
-                name: "costs["+region+"][land]"
-              }) }}
-            </div>
-            <div class="govuk-grid-column-one-third">
-              {{ govukInput({
-                label: {
-                  text: "Build"
-                },
-                prefix: {
-                  text: "£"
-                },
-                id: "build",
-                name: "costs["+region+"][build]"
-              }) }}
-            </div>
-            <div class="govuk-grid-column-one-third">
-              {{ govukInput({
-                label: {
-                  text: "Fees"
-                },
-                prefix: {
-                  text: "£"
-                },
-                id: "fees",
-                name: "costs["+region+"][fees]"
-              }) }}
-            </div>
-          </div>
+    <form action="/apply/regions" method="post">
+      <h2 class="govuk-heading-m">Weighted average home cost</h2>
 
-          <div class="cost-total govuk-visually-hidden">
-            <h3 class="govuk-heading-s">Total cost of the home</h3>
-            <div class="govuk-inset-text govuk-!-margin-top-0 govuk-!-margin-bottom-7">
-              £ <span>0</span>
-            </div>
-          </div>
-
+      <div class="govuk-grid-row calculate-total">
+        <div class="govuk-grid-column-one-third">
           {{ govukInput({
             label: {
-              text: "Weighted average Gross Development Value (GDV) or open market value",
-              classes: "govuk-label--m"
-            },
-            hint: {
-              text: "The cost of building the home should be lower than the open market value"
+              text: "Land"
             },
             prefix: {
               text: "£"
             },
-            id: "gdv",
-            name: "costs["+region+"][gdv]",
-            classes: "govuk-!-width-one-third"
+            id: "land",
+            name: "costs["+region+"][land]"
           }) }}
-
+        </div>
+        <div class="govuk-grid-column-one-third">
           {{ govukInput({
             label: {
-              text: "Amount of grant you need per home",
-              classes: "govuk-label--m"
-            },
-            hint: {
-              text: ""
+              text: "Build"
             },
             prefix: {
               text: "£"
             },
-            id: "average-grant-per-home",
-            name: "costs["+region+"][average-grant-per-home]",
-            classes: "govuk-!-width-one-third"
+            id: "build",
+            name: "costs["+region+"][build]"
           }) }}
-
-          <input type="hidden" name="currentTab" value="total-cost">
-          <input type="hidden" name="region" value="{{ query.region }}">
-
-          {{ govukButton({
-            text: "Save and continue"
+        </div>
+        <div class="govuk-grid-column-one-third">
+          {{ govukInput({
+            label: {
+              text: "Fees"
+            },
+            prefix: {
+              text: "£"
+            },
+            id: "fees",
+            name: "costs["+region+"][fees]"
           }) }}
-        </form>
+        </div>
       </div>
-    </div>
+
+      <div class="cost-total govuk-visually-hidden">
+        <h3 class="govuk-heading-s">Total cost of the home</h3>
+        <div class="govuk-inset-text govuk-!-margin-top-0 govuk-!-margin-bottom-7">
+          £ <span>0</span>
+        </div>
+      </div>
+
+      {{ govukInput({
+        label: {
+          text: "Weighted average Gross Development Value (GDV) or open market value",
+          classes: "govuk-label--m"
+        },
+        hint: {
+          text: "The cost of building the home should be lower than the open market value"
+        },
+        prefix: {
+          text: "£"
+        },
+        id: "gdv",
+        name: "costs["+region+"][gdv]",
+        classes: "govuk-!-width-one-third"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Amount of grant you need per home",
+          classes: "govuk-label--m"
+        },
+        hint: {
+          text: ""
+        },
+        prefix: {
+          text: "£"
+        },
+        id: "average-grant-per-home",
+        name: "costs["+region+"][average-grant-per-home]",
+        classes: "govuk-!-width-one-third"
+      }) }}
+
+      <input type="hidden" name="currentTab" value="total-cost">
+      <input type="hidden" name="region" value="{{ query.region }}">
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+    </form>
   </div>
 </div>
 

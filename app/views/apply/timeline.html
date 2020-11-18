@@ -19,82 +19,58 @@
 
     <h1 class="govuk-heading-l">{{ region }} ({{ totalHomes }} homes)</h1>
 
-    <div class="govuk-tabs" >
-      <h2 class="govuk-tabs__title">
-        Region
-      </h2>
-      <ul class="govuk-tabs__list">
-        <li class="govuk-tabs__list-item">
-          <a class="govuk-tabs__tab" href="/apply/total-cost?region={{ region }}">
-            Total cost
-          </a>
-        </li>
-        <li class="govuk-tabs__list-item">
-          <a class="govuk-tabs__tab" href="/apply/funding?region={{ region }}">
-            Funding
-          </a>
-        </li>
-        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-          <a class="govuk-tabs__tab" href="/apply/timeline?region={{ region }}">
-            Timeline
-          </a>
-        </li>
-      </ul>
-      <div class="govuk-tabs__panel">
-        <form action="/apply/regions" method="post">
-          <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
-            {% for year in fundingYears %}
-            <div class="govuk-accordion__section ">
-              <div class="govuk-accordion__section-header">
-                <h2 class="govuk-accordion__section-heading">
-                  <span class="govuk-accordion__section-button" id="accordion-default-heading-{{ year }}">
-                    In {{ year }}
-                  </span>
-                </h2>
-              </div>
-              <div id="accordion-default-content-{{ year }}" class="govuk-accordion__section-content"
-                   aria-labelledby="accordion-default-heading-{{ year }}">
-                {% for type, amount in homesInRegion | removeEmpty %}
-                <h2 class="govuk-heading-m">{{ type }} ({{ amount }} homes)</h2>
-
-                {% for quarter in quarters %}
-                  <p class='govuk-body'>{{ quarter }}</p>
-                  <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-one-half">
-                      {{ govukInput({
-                        label: {
-                          text: "Homes started"
-                        },
-                        id: "timeline-"+year+"-"+quarter+"-homes-started",
-                        name: "timeline["+region+"]["+year+"]["+quarter+"][Homes started]"
-                      }) }}
-                    </div>
-                    <div class="govuk-grid-column-one-half">
-                      {{ govukInput({
-                        label: {
-                          text: "Homes completed"
-                        },
-                        id: "timeline-"+year+"-"+quarter+"-homes-completed",
-                        name: "timeline["+region+"]["+year+"]["+quarter+"][Homes completed]"
-                      }) }}
-                    </div>
-                  </div>
-                {% endfor %}
-              {% endfor %}
-              </div>
-            </div>
-            {% endfor %}
+    <form action="/apply/regions" method="post">
+      <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+        {% for year in fundingYears %}
+        <div class="govuk-accordion__section ">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-{{ year }}">
+                In {{ year }}
+              </span>
+            </h2>
           </div>
+          <div id="accordion-default-content-{{ year }}" class="govuk-accordion__section-content"
+               aria-labelledby="accordion-default-heading-{{ year }}">
+            {% for type, amount in homesInRegion | removeEmpty %}
+            <h2 class="govuk-heading-m">{{ type }} ({{ amount }} homes)</h2>
 
-          <input type="hidden" name="currentTab" value="timeline">
-          <input type="hidden" name="region" value="{{ query.region }}">
-
-          {{ govukButton({
-            text: "Save and continue"
-          }) }}
-        </form>
+            {% for quarter in quarters %}
+              <p class='govuk-body'>{{ quarter }}</p>
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-half">
+                  {{ govukInput({
+                    label: {
+                      text: "Homes started"
+                    },
+                    id: "timeline-"+year+"-"+quarter+"-homes-started",
+                    name: "timeline["+region+"]["+year+"]["+quarter+"][Homes started]"
+                  }) }}
+                </div>
+                <div class="govuk-grid-column-one-half">
+                  {{ govukInput({
+                    label: {
+                      text: "Homes completed"
+                    },
+                    id: "timeline-"+year+"-"+quarter+"-homes-completed",
+                    name: "timeline["+region+"]["+year+"]["+quarter+"][Homes completed]"
+                  }) }}
+                </div>
+              </div>
+            {% endfor %}
+          {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
       </div>
-    </div>
+
+      <input type="hidden" name="currentTab" value="timeline">
+      <input type="hidden" name="region" value="{{ query.region }}">
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+    </form>
   </div>
 </div>
 

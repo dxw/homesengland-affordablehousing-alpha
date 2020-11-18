@@ -16,39 +16,15 @@
     }) }}
     <h1 class="govuk-heading-l">{{ region }} ({{ totalHomes }} homes)</h1>
 
-    <div class="govuk-tabs" >
-      <h2 class="govuk-tabs__title">
-        Region
-      </h2>
-      <ul class="govuk-tabs__list">
-        <li class="govuk-tabs__list-item">
-          <a class="govuk-tabs__tab" href="/apply/total-cost?region={{ region }}">
-            Total cost
-          </a>
-        </li>
-        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-          <a class="govuk-tabs__tab" href="/apply/funding?region={{ region }}">
-            Funding
-          </a>
-        </li>
-        <li class="govuk-tabs__list-item">
-          <a class="govuk-tabs__tab" href="/apply/timeline?region={{ region }}">
-            Timeline
-          </a>
-        </li>
-      </ul>
-      <div class="govuk-tabs__panel">
-        <form action="/apply/regions" method="post">
+    <form action="/apply/regions" method="post">
 
-          <input type="hidden" name="currentTab" value="funding">
-          <input type="hidden" name="region" value="{{ query.region }}">
+      <input type="hidden" name="currentTab" value="funding">
+      <input type="hidden" name="region" value="{{ query.region }}">
 
-          {{ govukButton({
-            text: "Save and continue"
-          }) }}
-        </form>
-      </div>
-    </div>
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+    </form>
   </div>
 </div>
 
