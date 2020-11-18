@@ -6,14 +6,6 @@ const router = express.Router()
 router.use(function (req, res, next) {
   res.locals.query = req.query
 
-  if (!req.session.data.tasks) {
-    req.session.data.tasks = {
-      checkEligibility: 'not_started',
-      partnership: 'not_started',
-      homesLocation: 'not_started'
-    }
-  }
-
   next()
 })
 

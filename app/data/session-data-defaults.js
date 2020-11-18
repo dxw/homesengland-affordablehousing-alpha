@@ -19,6 +19,10 @@ Example usage:
 
 module.exports = {
 
-  // Insert values here
+  tasks: {
+    checkEligibility: 'not_started',
+    partnership: 'not_started',
+    homesLocation: 'not_started'
+  }
 
 }
