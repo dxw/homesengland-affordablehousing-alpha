@@ -4,8 +4,8 @@
 {% block content %}
 
 {% set region = query.region %}
-{% set unitsInRegion = data['units'][region] %}
-{% set totalUnits = unitsInRegion | sumOfValues  %}
+{% set homesInRegion = data['homes'][region] %}
+{% set totalHomes = homesInRegion | sumOfValues  %}
 
 <div class="govuk-grid-row">
 
@@ -14,7 +14,7 @@
       text: "Back",
       href: "/apply/tasks"
     }) }}
-    <h1 class="govuk-heading-l">{{ region }} ({{ totalUnits }} units)</h1>
+    <h1 class="govuk-heading-l">{{ region }} ({{ totalHomes }} homes)</h1>
 
     <div class="govuk-tabs" >
       <h2 class="govuk-tabs__title">

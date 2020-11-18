@@ -4,8 +4,8 @@
 {% block content %}
 
 {% set region = query.region %}
-{% set unitsInRegion = data['units'][region] %}
-{% set totalUnits = unitsInRegion | sumOfValues  %}
+{% set homesInRegion = data['homes'][region] %}
+{% set totalHomes = homesInRegion | sumOfValues  %}
 {% set fundingYears = ['2021', '2022', '2023', '2023', '2024', '2025'] %}
 {% set quarters = ['Q1', 'Q2', 'Q3', 'Q4'] %}
 
@@ -17,7 +17,7 @@
       href: "/apply/tasks"
     }) }}
 
-    <h1 class="govuk-heading-l">{{ region }} ({{ totalUnits }} units)</h1>
+    <h1 class="govuk-heading-l">{{ region }} ({{ totalHomes }} homes)</h1>
 
     <div class="govuk-tabs" >
       <h2 class="govuk-tabs__title">
@@ -54,8 +54,8 @@
               </div>
               <div id="accordion-default-content-{{ year }}" class="govuk-accordion__section-content"
                    aria-labelledby="accordion-default-heading-{{ year }}">
-                {% for type, amount in unitsInRegion | removeEmpty %}
-                <h2 class="govuk-heading-m">{{ type }} ({{ amount }} units)</h2>
+                {% for type, amount in homesInRegion | removeEmpty %}
+                <h2 class="govuk-heading-m">{{ type }} ({{ amount }} homes)</h2>
 
                 {% for quarter in quarters %}
                   <p class='govuk-body'>{{ quarter }}</p>
@@ -63,19 +63,19 @@
                     <div class="govuk-grid-column-one-half">
                       {{ govukInput({
                         label: {
-                          text: "Units started"
+                          text: "Homes started"
                         },
-                        id: "timeline-"+year+"-"+quarter+"-units-started",
-                        name: "timeline["+region+"]["+year+"]["+quarter+"][Units started]"
+                        id: "timeline-"+year+"-"+quarter+"-homes-started",
+                        name: "timeline["+region+"]["+year+"]["+quarter+"][Homes started]"
                       }) }}
                     </div>
                     <div class="govuk-grid-column-one-half">
                       {{ govukInput({
                         label: {
-                          text: "Units completed"
+                          text: "Homes completed"
                         },
-                        id: "timeline-"+year+"-"+quarter+"-units-completed",
-                        name: "timeline["+region+"]["+year+"]["+quarter+"][Units completed]"
+                        id: "timeline-"+year+"-"+quarter+"-homes-completed",
+                        name: "timeline["+region+"]["+year+"]["+quarter+"][Homes completed]"
                       }) }}
                     </div>
                   </div>

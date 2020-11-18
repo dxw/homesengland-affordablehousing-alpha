@@ -4,8 +4,8 @@
 {% block content %}
 
 {% set region = query.region %}
-{% set unitsInRegion = data['units'][region] %}
-{% set totalUnits = unitsInRegion | sumOfValues  %}
+{% set homesInRegion = data['homes'][region] %}
+{% set totalHomes = homesInRegion | sumOfValues  %}
 
 <div class="govuk-grid-row">
 
@@ -15,7 +15,7 @@
       href: "/apply/tasks"
     }) }}
 
-    <h1 class="govuk-heading-l">{{ region }} ({{ totalUnits }} units)</h1>
+    <h1 class="govuk-heading-l">{{ region }} ({{ totalHomes }} homes)</h1>
     <div class="govuk-tabs" >
       <h2 class="govuk-tabs__title">
         Region
@@ -39,7 +39,7 @@
       </ul>
       <div class="govuk-tabs__panel">
         <form action="/apply/regions" method="post">
-          <h2 class="govuk-heading-m">Weighted average unit cost</h2>
+          <h2 class="govuk-heading-m">Weighted average home cost</h2>
 
           <div class="govuk-grid-row calculate-total">
             <div class="govuk-grid-column-one-third">
@@ -81,7 +81,7 @@
           </div>
 
           <div class="cost-total govuk-visually-hidden">
-            <h3 class="govuk-heading-s">Total cost of the unit</h3>
+            <h3 class="govuk-heading-s">Total cost of the home</h3>
             <div class="govuk-inset-text govuk-!-margin-top-0 govuk-!-margin-bottom-7">
               £ <span>0</span>
             </div>
@@ -105,7 +105,7 @@
 
           {{ govukInput({
             label: {
-              text: "Amount of grant you need per unit",
+              text: "Amount of grant you need per home",
               classes: "govuk-label--m"
             },
             hint: {
@@ -114,8 +114,8 @@
             prefix: {
               text: "£"
             },
-            id: "average-grant-per-unit",
-            name: "costs["+region+"][average-grant-per-unit]",
+            id: "average-grant-per-home",
+            name: "costs["+region+"][average-grant-per-home]",
             classes: "govuk-!-width-one-third"
           }) }}
 

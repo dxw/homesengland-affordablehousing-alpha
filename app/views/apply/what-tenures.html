@@ -35,11 +35,11 @@
               conditional: {
                 html: govukInput({
                   id: "social-rent-"+ region | parameterize,
-                  name: "units[" + region + "][Social rent]",
+                  name: "homes[" + region + "][Social rent]",
                   spellcheck: false,
                   classes: "govuk-!-width-one-third",
                   label: {
-                    text: "How many units?"
+                    text: "How many homes?"
                   }
                 })
               }
@@ -50,11 +50,11 @@
               conditional: {
                 html: govukInput({
                   id: "affordable-rent-"+ region | parameterize,
-                  name: "units[" + region + "][Affordable rent]",
+                  name: "homes[" + region + "][Affordable rent]",
                   spellcheck: false,
                   classes: "govuk-!-width-one-third",
                   label: {
-                    text: "How many units?"
+                    text: "How many homes?"
                   }
                 })
               }
@@ -65,11 +65,11 @@
               conditional: {
                 html: govukInput({
                   id: "shared-ownership-"+ region | parameterize,
-                  name: "units[" + region + "][Shared ownership]",
+                  name: "homes[" + region + "][Shared ownership]",
                   spellcheck: false,
                   classes: "govuk-!-width-one-third",
                   label: {
-                    text: "How many units?"
+                    text: "How many homes?"
                   }
                 })
               }
@@ -80,11 +80,11 @@
               conditional: {
                 html: govukInput({
                   id: "rent-to-buy-"+ region | parameterize,
-                  name: "units[" + region + "][Rent to buy]",
+                  name: "homes[" + region + "][Rent to buy]",
                   spellcheck: false,
                   classes: "govuk-!-width-one-third",
                   label: {
-                    text: "How many units?"
+                    text: "How many homes?"
                   }
                 })
               }
@@ -95,11 +95,11 @@
               conditional: {
                 html: govukInput({
                   id: "supported-housing-"+ region | parameterize,
-                  name: "units[" + region + "][Supported housing]",
+                  name: "homes[" + region + "][Supported housing]",
                   spellcheck: false,
                   classes: "govuk-!-width-one-third",
                   label: {
-                    text: "How many units?"
+                    text: "How many homes?"
                   }
                 })
               }
