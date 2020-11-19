@@ -11,13 +11,13 @@
       href: "/apply/tasks"
     }) }}
 
-    <form action="/apply/homes-location" method="get">
+    <form action="/apply/tasks" method="get">
       {{ govukCharacterCount({
         name: "why",
         id: "why",
-        maxlength: 200,
+        maxwords: 200,
         label: {
-          text: "Describe why you are bidding",
+          text: "Describe why you’re applying for affordable housing grant funding and provide supporting evidence",
           classes: "govuk-label--l",
           isPageHeading: true
         },
@@ -29,12 +29,14 @@
       {{ govukCharacterCount({
         name: "why",
         id: "why",
-        maxlength: 200,
+        maxwords: 200,
         label: {
           text: "Briefly explain the consequence of this"
         },
         text: "Briefly explain why you're doing this"
       }) }}
+
+      <input type="hidden" name="tasks[supportingEvidence]" value="completed">
 
       {{ govukButton({
         text: "Save and continue",
