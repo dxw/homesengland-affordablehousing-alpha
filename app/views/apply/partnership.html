@@ -11,43 +11,41 @@
       href: "/apply/tasks"
     }) }}
 
-    <form action="" method="post">
-
-      <form action="/apply/tasks" method="get">
-        {{ govukRadios({
-          classes: "govuk-radios--inline",
-          idPrefix: "partnership",
-          name: "partnership",
-          fieldset: {
-            legend: {
-              text: "Are you applying for affordable housing grant funding with another organisation?",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
+    <form action="/apply/tasks" method="get">
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "partnership",
+        name: "partnership",
+        fieldset: {
+          legend: {
+            text: "Are you applying for affordable housing grant funding with another organisation?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            conditional: {
+              html: '<label for="partner-name" class="govuk-label">Who with?</label><div id="partner-name-container"></div>'
             }
           },
-          hint: {
-            text: ""
-          },
-          items: [
-            {
-              value: "yes",
-              text: "Yes",
-              conditional: {
-                html: '<label for="partner-name" class="govuk-label">Who with?</label><div id="partner-name-container"></div>'
-              }
-            },
-            {
-              value: "no",
-              text: "No"
-            }
-          ]
-        }) }}
-        <input type="hidden" name="tasks[partnership]" value="completed">
-        {{ govukButton({
-          text: "Save and continue",
-          type: "submit",
-          classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8"
-        }) }}
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+      <input type="hidden" name="tasks[partnership]" value="completed">
+      {{ govukButton({
+        text: "Save and continue",
+        type: "submit",
+        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+      }) }}
     </form>
   </div>
 </div>
