@@ -13,6 +13,6 @@ $(document).ready(function () {
     $('.calculate-total input').each(function () {
       total += Number($(this).val())
     })
-    $('.cost-total').removeClass('govuk-visually-hidden').find('span').text(total.toLocaleString())
+    $('.cost-total').find('span').text(total.toLocaleString())
   })
 })
