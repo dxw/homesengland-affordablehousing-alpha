@@ -11,8 +11,11 @@ $(document).ready(function () {
   $('.calculate-total input').on('change', function () {
     let total = 0
     $('.calculate-total input').each(function () {
-      total += Number($(this).val())
+      var amount = Number($(this).val())
+      if (amount > 0) {
+        total += amount
+      }
     })
-    $('.cost-total').find('span').text(total.toLocaleString())
+    $('.live-total').find('span').text(total.toLocaleString())
   })
 })
