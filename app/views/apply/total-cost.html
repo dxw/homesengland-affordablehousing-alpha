@@ -81,7 +81,7 @@
       {% for type, amount in homesInRegion | removeEmpty %}
         {{ govukInput({
           label: {
-            text: type + " (" + amount + ")",
+            text: type + " (" + amount + " homes)",
             classes: "govuk-label--s"
           },
           hint: {
