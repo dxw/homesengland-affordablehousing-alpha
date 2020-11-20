@@ -77,21 +77,40 @@
         classes: "govuk-!-width-one-third"
       }) }}
 
-      {{ govukInput({
-        label: {
-          text: "Amount of grant you need per home",
-          classes: "govuk-label--m"
-        },
-        hint: {
-          text: ""
-        },
-        prefix: {
-          text: "£"
-        },
-        id: "average-grant-per-home",
-        name: "costs["+region+"][average-grant-per-home]",
-        classes: "govuk-!-width-one-third"
-      }) }}
+      <h3 class="govuk-heading-m govuk-!-margin-top-7">Amount of grant you need per home</h3>
+      {% for type, amount in homesInRegion | removeEmpty %}
+        {{ govukInput({
+          label: {
+            text: type + " (" + amount + ")",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: ""
+          },
+          prefix: {
+            text: "£"
+          },
+          id: "average-grant-per-home-"+ type | parameterize,
+          name: "costs["+region+"][average-grant-per-home]["+type+"]",
+          classes: "govuk-!-width-one-third"
+        }) }}
+      {% endfor %}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-7">Home starts on site to Mar 2027</h3>
+      {% for type, amount in homesInRegion | removeEmpty %}
+        {{ govukInput({
+          label: {
+            text: type + ": Grant funded",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: ""
+          },
+          id: "home-starts-"+ type | parameterize,
+          name: "costs["+region+"][home-starts]["+type+"]",
+          classes: "govuk-!-width-one-third"
+        }) }}
+      {% endfor %}
 
       <input type="hidden" name="tasks[totalCost-{{ region | parameterize }}]" value="completed">
 
