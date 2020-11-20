@@ -45,7 +45,7 @@ module.exports = function (env) {
   }
 
   filters.removeEmpty = function (obj) {
-    return _.reject(obj, function (item) { return item === null || item === undefined || item === '' })
+    return _.omitBy(obj, function (item) { return item === null || item === undefined || item === '' })
   }
 
   filters.filterStatus = function (obj, status) {
