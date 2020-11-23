@@ -12,7 +12,7 @@
     }) }}
 
     <h1 class="govuk-heading-l">What tenures?</h1>
-    <p class="govuk-body">Select amount of tenures and specify the amount of homes</p>
+    <p class="govuk-body">Select the tenures and the number of homes</p>
 
     <form action="/apply/tasks" method="get" novalidate>
       {% for region in data['homes-locations'] %}
@@ -39,7 +39,7 @@
                   spellcheck: false,
                   classes: "govuk-!-width-one-third",
                   label: {
-                    text: "How many homes?"
+                    text: "How many homes will you deliver?"
                   }
                 })
               }
@@ -54,7 +54,7 @@
                   spellcheck: false,
                   classes: "govuk-!-width-one-third",
                   label: {
-                    text: "How many homes?"
+                    text: "How many homes will you deliver?"
                   }
                 })
               }
@@ -69,7 +69,7 @@
                   spellcheck: false,
                   classes: "govuk-!-width-one-third",
                   label: {
-                    text: "How many homes?"
+                    text: "How many homes will you deliver?"
                   }
                 })
               }
@@ -84,7 +84,7 @@
                   spellcheck: false,
                   classes: "govuk-!-width-one-third",
                   label: {
-                    text: "How many homes?"
+                    text: "How many homes will you deliver?"
                   }
                 })
               }
@@ -93,13 +93,39 @@
               value: "Supported housing",
               text: "Supported housing",
               conditional: {
-                html: govukInput({
+                html:
+                govukSelect({
+                  id: "type",
+                  name: "type",
+                  label: {
+                    text: "Select the type of supported housing to help us understand the grant you need"
+                  },
+                  items: [
+                    {
+                      value: "",
+                      text: ""
+                    },
+                    {
+                      value: "Physical disability",
+                      text: "Physical disability"
+                    },
+                    {
+                      value: "Retirement",
+                      text: "Retirement"
+                    },
+                    {
+                      value: "Mental health",
+                      text: "Mental health"
+                    }
+                  ]
+                }) +
+                govukInput({
                   id: "supported-housing-"+ region | parameterize,
                   name: "homes[" + region + "][Supported housing]",
                   spellcheck: false,
                   classes: "govuk-!-width-one-third",
                   label: {
-                    text: "How many homes?"
+                    text: "How many homes will you deliver?"
                   }
                 })
               }
