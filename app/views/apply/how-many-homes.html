@@ -1,0 +1,50 @@
+
+{% extends "apply/layout.html" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-full">
+    {{ govukBackLink({
+      text: "Back",
+      href: "/apply/tasks"
+    }) }}
+
+    <h1 class="govuk-heading-l">How many homes are you aspiring to build?</h1>
+
+    <form action="/apply/tasks" method="get" novalidate>
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Region</th>
+            {% for tenure in data['tenures'] %}
+              <th scope="col" class="govuk-table__header govuk-table__header--numeric" width=" {{ 80 / (data['tenures'] | length) }}%">{{ tenure }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% for region in data['homes-locations'] %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">{{ region }}</th>
+              {% for tenure in data['tenures'] %}
+                <td class="govuk-table__cell govuk-table__cell--numeric"><input class="govuk-input govuk-input--width-5" name="homes[{{ region }}][{{ tenure }}]" type="text"></td>
+              {% endfor %}
+            </tr>
+            <input type="hidden" name="tasks[funding-{{ region | parameterize }}]" value="{{ data.tasks['funding-'+ region | parameterize] | d('not_started') }}">
+            <input type="hidden" name="tasks[totalCost-{{ region | parameterize }}]" value="{{ data.tasks['totalCost-'+ region | parameterize] | d('not_started') }}">
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <input type="hidden" name="tasks[howManyHomes]" value="completed">
+      {{ govukButton({
+        text: "Save and continue",
+        type: "submit",
+        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

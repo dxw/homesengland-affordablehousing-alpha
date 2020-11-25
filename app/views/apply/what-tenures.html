@@ -5,24 +5,20 @@
 
 <div class="govuk-grid-row">
 
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
     {{ govukBackLink({
       text: "Back",
       href: "/apply/tasks"
     }) }}
 
-    <h1 class="govuk-heading-l">What tenures will you offer?</h1>
-    <p class="govuk-body">Select the tenures and the number of homes</p>
-
     <form action="/apply/tasks" method="get" novalidate>
-      {% for region in data['homes-locations'] %}
         {{ govukCheckboxes({
-          idPrefix: "tenures-" + region | parameterize,
-          name: "tenures[" + region + "]",
+          idPrefix: "tenures",
+          name: "tenures",
           fieldset: {
             legend: {
-              text: region,
-              classes: "govuk-fieldset__legend--m"
+              text: "What tenures will you offer?",
+              classes: "govuk-fieldset__legend--l"
             }
           },
           hint: {
@@ -31,80 +27,34 @@
           items: [
             {
               value: "Social rent",
-              text: "Social rent",
-              conditional: {
-                html: govukInput({
-                  id: "social-rent-"+ region | parameterize,
-                  name: "homes[" + region + "][Social rent]",
-                  spellcheck: false,
-                  classes: "govuk-!-width-one-third",
-                  label: {
-                    text: "How many homes will you deliver?"
-                  }
-                })
-              }
+              text: "Social rent"
             },
             {
               value: "Affordable rent",
-              text: "Affordable rent",
-              conditional: {
-                html: govukInput({
-                  id: "affordable-rent-"+ region | parameterize,
-                  name: "homes[" + region + "][Affordable rent]",
-                  spellcheck: false,
-                  classes: "govuk-!-width-one-third",
-                  label: {
-                    text: "How many homes will you deliver?"
-                  }
-                })
-              }
+              text: "Affordable rent"
             },
             {
               value: "Shared ownership",
-              text: "Shared ownership",
-              conditional: {
-                html: govukInput({
-                  id: "shared-ownership-"+ region | parameterize,
-                  name: "homes[" + region + "][Shared ownership]",
-                  spellcheck: false,
-                  classes: "govuk-!-width-one-third",
-                  label: {
-                    text: "How many homes will you deliver?"
-                  }
-                })
-              }
+              text: "Shared ownership"
             },
             {
               value: "Rent to buy",
-              text: "Rent to buy",
-              conditional: {
-                html: govukInput({
-                  id: "rent-to-buy-"+ region | parameterize,
-                  name: "homes[" + region + "][Rent to buy]",
-                  spellcheck: false,
-                  classes: "govuk-!-width-one-third",
-                  label: {
-                    text: "How many homes will you deliver?"
-                  }
-                })
-              }
+              text: "Rent to buy"
             },
             {
               value: "Supported housing for rent",
               text: "Supported housing for rent",
               conditional: {
                 html:
-                govukSelect({
+                govukCheckboxes({
                   id: "type",
                   name: "type",
-                  label: {
-                    text: "Select the type of supported housing to help us understand the grant you need"
+                  fieldset: {
+                    legend: {
+                      text: "Select the types of supported housing to help us understand the grant you need"
+                    }
                   },
                   items: [
-                    {
-                      value: "",
-                      text: ""
-                    },
                     {
                       value: "Physical disability",
                       text: "Physical disability"
@@ -118,24 +68,13 @@
                       text: "Mental health"
                     }
                   ]
-                }) +
-                govukInput({
-                  id: "supported-housing-"+ region | parameterize,
-                  name: "homes[" + region + "][Supported housing]",
-                  spellcheck: false,
-                  classes: "govuk-!-width-one-third",
-                  label: {
-                    text: "How many homes will you deliver?"
-                  }
                 })
               }
             }
           ]
         }) }}
-        <input type="hidden" name="tasks[funding-{{ region | parameterize }}]" value="{{ data.tasks['funding-'+ region | parameterize] | d('not_started') }}">
-        <input type="hidden" name="tasks[totalCost-{{ region | parameterize }}]" value="{{ data.tasks['totalCost-'+ region | parameterize] | d('not_started') }}">
-      {% endfor %}
       <input type="hidden" name="tasks[tenures]" value="completed">
+      <input type="hidden" name="tasks[howManyHomes]" value="not_started">
       {{ govukButton({
         text: "Save and continue",
         type: "submit",

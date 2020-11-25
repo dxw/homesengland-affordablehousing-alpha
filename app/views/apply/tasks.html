@@ -68,6 +68,14 @@
             </span>
             {{ taskStatus('tenures', data['tasks']) }}
           </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              {% if 'howManyHomes' in data['tasks'] %}<a href="/apply/how-many-homes">{% endif %}
+              How many homes are you aspiring to build
+              {% if 'howManyHomes' in data['tasks'] %}</a>{% endif %}
+            </span>
+            {{ taskStatus('howManyHomes', data['tasks']) }}
+          </li>
           {% if data['tasks']['homesLocation'] == 'completed' %}
             {% for region in data['homes-locations'] %}
               <li class="app-task-list__item">
