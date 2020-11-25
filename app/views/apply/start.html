@@ -1,0 +1,42 @@
+
+{% extends "apply/layout.html" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Apply for affordable housing funding</h1>
+
+    <p class="govuk-body">Strategic partners with Homes England should use this service to:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>check if you are eligible for funding</li>
+      <li>apply for funding</li>
+    </ul>
+
+    <p class="govuk-body">Applying for funding means you intend to enter into a long term arrangement with Homes England to deliver homes over a period of time.</p>
+    <p class="govuk-body">This service is for funding from 2021 to 2026 and replaces all previous services.</p>
+    <p class="govuk-body">Check our <a href="https://www.gov.uk/guidance/capital-funding-guide">Capital Funding Guide</a> for help on information you’ll need to provide in your application. </p>
+
+
+    {{ govukButton({
+      text: "Start now",
+      href: "/apply/sign-in",
+      classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
+      isStartButton: true
+    }) }}
+
+    <h2 class="govuk-heading-m">Before you start</h2>
+
+    <p class="govuk-body">To apply for funding you’ll need to:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>be an investment partner with Homes England or applying jointly with an investment partner</li>
+      <li>agree to deliver a minimum number of homes</li>
+      <li>certify that your application has been approved by your organisation’s board of directors</li>
+    </ul>
+
+  </div>
+</div>
+
+{% endblock %}
