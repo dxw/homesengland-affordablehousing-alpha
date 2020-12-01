@@ -14,7 +14,7 @@
     <h1 class="govuk-heading-l">How many homes will you build?</h1>
 
     <form action="/apply/tasks" method="get" novalidate>
-      <table class="govuk-table">
+      <table class="govuk-table calculate-total">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Region</th>
@@ -28,14 +28,29 @@
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header">{{ region }}</th>
               {% for tenure in data['tenures'] %}
-                <td class="govuk-table__cell govuk-table__cell--numeric"><input class="govuk-input govuk-input--width-5" name="homes[{{ region }}][{{ tenure }}]" type="text"></td>
+                <td class="govuk-table__cell govuk-table__cell--numeric"><input class="govuk-input govuk-input--width-5" name="homes[{{ region }}][{{ tenure }}]" type="text" data-addTo="total-{{ tenure | parameterize }}"></td>
               {% endfor %}
             </tr>
             <input type="hidden" name="tasks[funding-{{ region | parameterize }}]" value="{{ data.tasks['funding-'+ region | parameterize] | d('not_started') }}">
             <input type="hidden" name="tasks[totalCost-{{ region | parameterize }}]" value="{{ data.tasks['totalCost-'+ region | parameterize] | d('not_started') }}">
           {% endfor %}
         </tbody>
+        <tfoot>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Total</td>
+            {% for tenure in data['tenures'] %}
+              <td class="govuk-table__cell govuk-table__cell--numeric"><span id="total-{{ tenure | parameterize }}">0</span></td>
+            {% endfor %}
+          </tr>
+        </tfoot>
       </table>
+
+      <div class="live-total govuk-!-margin-top-9">
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-3">Total number of homes to be built</h3>
+        <div class="govuk-inset-text govuk-!-margin-top-0 govuk-!-margin-bottom-7">
+          <span>0</span>
+        </div>
+      </div>
 
       <input type="hidden" name="tasks[howManyHomes]" value="completed">
       {{ govukButton({

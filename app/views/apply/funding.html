@@ -222,42 +222,6 @@
           ]
         }) }}
       </div>
-      <h3 class="govuk-heading-s">Business Plan effect of Strategic Partnership</h3>
-      {{ govukInput({
-          label: {
-            text: "Impact on EBITDA - MRI interest cover of the Strategic Partnership to March 2029"
-          },
-          id: "impact-on-ebitda",
-          classes: "govuk-input--width-20",
-          name: "funding["+region+"][Impact on EBITDA - MRI interest cover of the Strategic Partnership to March 2029]"
-      }) }}
-
-      {{ govukInput({
-          label: {
-            text: "Impact on gearing of the Strategic Partnership to March 2029 "
-          },
-          id: "impact-on-gearing",
-          classes: "govuk-input--width-20",
-          name: "funding["+region+"][Impact on gearing of the Strategic Partnership to March 2029]"
-      }) }}
-
-      {{ govukInput({
-          label: {
-            text: "Impact of Strategic Partnership on credit rating"
-          },
-          id: "impact-on-credit-rating",
-          classes: "govuk-input--width-20",
-          name: "funding["+region+"][Impact of Strategic Partnership on credit rating]"
-      }) }}
-
-      {{ govukInput({
-          label: {
-            text: "Impact on sales exposure"
-          },
-          id: "impact-on-sales-exposure",
-          classes: "govuk-input--width-20",
-          name: "funding["+region+"][Impact on sales exposure]"
-      }) }}
 
       <input type="hidden" name="tasks[funding-{{ region | parameterize }}]" value="completed">
 
