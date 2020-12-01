@@ -23,7 +23,6 @@ module.exports = {
     checkEligibility: 'not_started',
     partnership: 'not_started',
     homesLocation: 'not_started',
-    programmeTimeline: 'not_started',
     supportingEvidence: 'not_started'
   }
 

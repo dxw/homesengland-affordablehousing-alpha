@@ -98,9 +98,9 @@
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="/apply/timeline">
+              {% if 'programmeTimeline' in data['tasks'] %}<a href="/apply/timeline">{% endif %}
                 Programme timeline
-              </a>
+              {% if 'programmeTimeline' in data['tasks'] %}</a>{% endif %}
             </span>
             {{ taskStatus('programmeTimeline', data['tasks']) }}
           </li>
