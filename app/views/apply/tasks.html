@@ -33,13 +33,13 @@
 
       <li>
         <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">2. </span> Working with another strategic partner
+          <span class="app-task-list__section-number">2. </span> Working with another partner
         </h2>
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="/apply/partnership">
-                Applying for funding with a strategic partner
+                Applying for funding with another partner
               </a>
             </span>
             {{ taskStatus('partnership', data['tasks']) }}
@@ -49,7 +49,7 @@
 
       <li>
         <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">3. </span> Regions and tenures
+          <span class="app-task-list__section-number">3. </span> Regions, tenures and number of homes
         </h2>
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
@@ -71,7 +71,7 @@
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               {% if 'howManyHomes' in data['tasks'] %}<a href="/apply/how-many-homes">{% endif %}
-              How many homes are you aspiring to build
+              How many homes will you build
               {% if 'howManyHomes' in data['tasks'] %}</a>{% endif %}
             </span>
             {{ taskStatus('howManyHomes', data['tasks']) }}
