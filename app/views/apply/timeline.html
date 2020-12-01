@@ -8,7 +8,7 @@
 
 <div class="govuk-grid-row">
 
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
     {{ govukBackLink({
       text: "Back",
       href: "/apply/tasks"
@@ -30,29 +30,43 @@
           <div id="accordion-default-content-{{ year }}" class="govuk-accordion__section-content"
                aria-labelledby="accordion-default-heading-{{ year }}">
 
-            {% for quarter in quarters %}
-              <p class='govuk-body'>{{ quarter }}</p>
-              <div class="govuk-grid-row">
-                <div class="govuk-grid-column-one-half">
-                  {{ govukInput({
-                    label: {
-                      text: "Homes started"
-                    },
-                    id: "timeline-"+year+"-"+quarter+"-homes-started",
-                    name: "timeline["+year+"]["+quarter+"][Homes started]"
-                  }) }}
-                </div>
-                <div class="govuk-grid-column-one-half">
-                  {{ govukInput({
-                    label: {
-                      text: "Homes completed"
-                    },
-                    id: "timeline-"+year+"-"+quarter+"-homes-completed",
-                    name: "timeline["+year+"]["+quarter+"][Homes completed]"
-                  }) }}
-                </div>
-              </div>
-            {% endfor %}
+            <table class="govuk-table calculate-total">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header"></th>
+                  {% for quarter in quarters %}
+                    <th scope="col" colspan="2" class="govuk-table__header govuk-table__header--numeric" width="20%">{{ quarter }}</th>
+                  {% endfor %}
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header"></th>
+                  {% for quarter in quarters %}
+                    <th scope="col" colspan="1" class="govuk-table__header govuk-table__header--numeric" width="10%" style="font-size: 0.75em">Started</th>
+                    <th scope="col" colspan="1" class="govuk-table__header govuk-table__header--numeric" width="10%" style="font-size: 0.75em">Completed</th>
+                  {% endfor %}
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                {% for tenure in data['tenures'] %}
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">{{ tenure }}</th>
+                    {% for quarter in quarters %}
+                      <td class="govuk-table__cell govuk-table__cell--numeric"><input class="govuk-input govuk-input--width-3" name="timeline[{{ year }}][{{ quarter }}][Started]" type="text" data-addTo="total-started-{{ year }}-{{ quarter }}"></td>
+                      <td class="govuk-table__cell govuk-table__cell--numeric"><input class="govuk-input govuk-input--width-3" name="timeline[{{ year }}][{{ quarter }}][Completed]" type="text" data-addTo="total-completed-{{ year }}-{{ quarter }}"></td>
+                    {% endfor %}
+                  </tr>
+                {% endfor %}
+              </tbody>
+              <tfoot>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__header">Total</td>
+                  {% for quarter in quarters %}
+                    <td class="govuk-table__cell govuk-table__cell--numeric"><span id="total-started-{{ year }}-{{ quarter }}">0</span></td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric"><span id="total-completed-{{ year }}-{{ quarter }}">0</span></td>
+                  {% endfor %}
+                </tr>
+              </tfoot>
+            </table>
           </div>
         </div>
         {% endfor %}
