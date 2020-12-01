@@ -58,6 +58,10 @@ module.exports = function (env) {
     }, 0)
   }
 
+  filters.toLocaleString = function (number) {
+    return number.toLocaleString()
+  }
+
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */

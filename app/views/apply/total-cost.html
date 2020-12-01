@@ -17,7 +17,7 @@
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">Total cost</h1>
-    <h2 class="govuk-heading-m">{{ region }} ({{ totalHomes }} homes)</h2>
+    <h2 class="govuk-heading-m">{{ region }} ({{ totalHomes | toLocaleString }} homes)</h2>
 
     <form action="/apply/tasks" method="post">
       <h2 class="govuk-heading-m">Weighted average home cost</h2>
