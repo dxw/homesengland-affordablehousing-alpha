@@ -55,18 +55,10 @@
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="/apply/homes-location">
-                Where the homes will be built
+                Where and which tenures you'll be building
               </a>
             </span>
             {{ taskStatus('homesLocation', data['tasks']) }}
-          </li>
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              {% if 'tenures' in data['tasks'] %}<a href="/apply/what-tenures">{% endif %}
-              Which tenures you’ll be building
-              {% if 'tenures' in data['tasks'] %}</a>{% endif %}
-            </span>
-            {{ taskStatus('tenures', data['tasks']) }}
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">

@@ -15,6 +15,7 @@
       {{ govukCheckboxes({
         idPrefix: "homes-locations",
         name: "homes-locations",
+        classes: "govuk-!-margin-bottom-5",
         fieldset: {
           legend: {
             text: "Where will the homes be built?",
@@ -60,8 +61,69 @@
           }
         ]
       }) }}
+      {{ govukCheckboxes({
+          idPrefix: "tenures",
+          name: "tenures",
+          fieldset: {
+            legend: {
+              text: "What type of tenure will you offer?",
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "Social rent",
+              text: "Social rent"
+            },
+            {
+              value: "Affordable rent",
+              text: "Affordable rent"
+            },
+            {
+              value: "Shared ownership",
+              text: "Shared ownership"
+            },
+            {
+              value: "Rent to buy",
+              text: "Rent to buy"
+            },
+            {
+              value: "Supported housing for rent",
+              text: "Supported housing for rent",
+              conditional: {
+                html:
+                govukCheckboxes({
+                  id: "type",
+                  name: "type",
+                  fieldset: {
+                    legend: {
+                      text: "Select the types of supported housing to help us understand the grant you need"
+                    }
+                  },
+                  items: [
+                    {
+                      value: "Physical disability",
+                      text: "Physical disability"
+                    },
+                    {
+                      value: "Retirement",
+                      text: "Retirement"
+                    },
+                    {
+                      value: "Mental health",
+                      text: "Mental health"
+                    }
+                  ]
+                })
+              }
+            }
+          ]
+        }) }}
+      <input type="hidden" name="tasks[howManyHomes]" value="not_started">
       <input type="hidden" name="tasks[homesLocation]" value="completed">
-      <input type="hidden" name="tasks[tenures]" value="{{ data.tasks.tenures | d('not_started') }}">
       {{ govukButton({
         text: "Save and continue",
         type: "submit",
