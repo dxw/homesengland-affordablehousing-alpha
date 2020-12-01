@@ -37,7 +37,7 @@
         </tbody>
         <tfoot>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">Total</td>
+            <td class="govuk-table__header">Total</td>
             {% for tenure in data['tenures'] %}
               <td class="govuk-table__cell govuk-table__cell--numeric"><span id="total-{{ tenure | parameterize }}">0</span></td>
             {% endfor %}
