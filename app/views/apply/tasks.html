@@ -17,7 +17,7 @@
     <ol class="app-task-list">
       <li>
         <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">1. </span>Check your commitments for this funding
+          <span class="app-task-list__section-number">1. </span>Check how many homes you’ll need to deliver
         </h2>
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
@@ -39,7 +39,7 @@
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="/apply/partnership">
-                Applying for funding with another partner
+                Tell us who you're working with
               </a>
             </span>
             {{ taskStatus('partnership', data['tasks']) }}
@@ -55,7 +55,7 @@
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="/apply/homes-location">
-                Where and which tenures you'll be building
+                Where you’ll build and the tenures you’ll offer
               </a>
             </span>
             {{ taskStatus('homesLocation', data['tasks']) }}
@@ -63,7 +63,7 @@
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               {% if 'howManyHomes' in data['tasks'] %}<a href="/apply/how-many-homes">{% endif %}
-              How many homes you will build
+              How many homes you’ll build
               {% if 'howManyHomes' in data['tasks'] %}</a>{% endif %}
             </span>
             {{ taskStatus('howManyHomes', data['tasks']) }}
