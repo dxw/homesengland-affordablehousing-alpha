@@ -17,7 +17,7 @@
     <ol class="app-task-list">
       <li>
         <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">1. </span>Check how many homes you’ll need to deliver
+          <span class="app-task-list__section-number">1. </span>Check before you start
         </h2>
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
@@ -33,7 +33,7 @@
 
       <li>
         <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">2. </span> Working with another partner
+          <span class="app-task-list__section-number">2. </span> Prepare your application
         </h2>
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
@@ -44,14 +44,6 @@
             </span>
             {{ taskStatus('partnership', data['tasks']) }}
           </li>
-        </ul>
-      </li>
-
-      <li>
-        <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">3. </span> Regions, tenures and number of homes
-        </h2>
-        <ul class="app-task-list__items">
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="/apply/homes-location">
@@ -88,14 +80,6 @@
               </li>
             {% endfor %}
           {% endif %}
-        </ul>
-      </li>
-
-      <li>
-        <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">4. </span> Delivery forecast
-        </h2>
-        <ul class="app-task-list__items">
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               {% if 'programmeTimeline' in data['tasks'] %}<a href="/apply/timeline">{% endif %}
@@ -104,14 +88,6 @@
             </span>
             {{ taskStatus('programmeTimeline', data['tasks']) }}
           </li>
-        </ul>
-      </li>
-
-      <li>
-        <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">5. </span> Supporting evidence
-        </h2>
-        <ul class="app-task-list__items">
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="/apply/supporting-evidence">
@@ -125,7 +101,7 @@
 
       <li>
         <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">6. </span> Apply
+          <span class="app-task-list__section-number">3. </span> Submit your application
         </h2>
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
