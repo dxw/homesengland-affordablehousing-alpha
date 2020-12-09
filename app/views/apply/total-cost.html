@@ -20,7 +20,7 @@
     <h2 class="govuk-heading-m">{{ region }} ({{ totalHomes | toLocaleString }} homes)</h2>
 
     <form action="/apply/tasks" method="post">
-      <h2 class="govuk-heading-m">Weighted average home cost</h2>
+      <h2 class="govuk-heading-m">Average home cost</h2>
 
       <div class="govuk-grid-row calculate-total">
         <div class="govuk-grid-column-one-third">
@@ -50,24 +50,24 @@
         <div class="govuk-grid-column-one-third">
           {{ govukInput({
             label: {
-              text: "Fees"
+              text: "Oncosts"
             },
             prefix: {
               text: "£"
             },
-            id: "fees",
-            name: "costs["+region+"][fees]"
+            id: "oncosts",
+            name: "costs["+region+"][oncosts]"
           }) }}
         </div>
       </div>
 
       {{ govukInput({
         label: {
-          text: "Weighted average Gross Development Value (GDV) or open market value",
+          text: "Average Gross Development Value (GDV) or open market value",
           classes: "govuk-label--m"
         },
         hint: {
-          text: "The cost of building the home should be lower than the open market value"
+          text: ""
         },
         prefix: {
           text: "£"
@@ -81,7 +81,7 @@
       {% for type, amount in homesInRegion | removeEmpty %}
         {{ govukInput({
           label: {
-            text: type + " (" + amount + " homes)",
+            text: type,
             classes: "govuk-label--s"
           },
           hint: {
