@@ -2,11 +2,7 @@
 {% extends "apply/layout.html" %}
 
 {% block content %}
-
-{% set region = query.region %}
-{% set homesInRegion = data['homes'][region] %}
-{% set totalHomes = homesInRegion | sumOfValues  %}
-
+  
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-two-thirds">
@@ -14,9 +10,6 @@
       text: "Back",
       href: "/apply/tasks"
     }) }}
-    <h1 class="govuk-heading-l">Funding</h1>
-    <h2 class="govuk-heading-m">{{ region }} ({{ totalHomes | toLocaleString }} homes)</h2>
-
     <form action="/apply/tasks" method="post">
       <div class="calculate-total">
         {{ govukCheckboxes({
@@ -25,7 +18,8 @@
           fieldset: {
             legend: {
               text: "Capital funding",
-              classes: "govuk-fieldset__legend--s"
+              classes: "govuk-fieldset__legend--l",
+              isPageHeading: true
             }
           },
           items: [
@@ -42,7 +36,7 @@
                   },
                   id: "funding-debt-funding",
                   classes: "govuk-input--width-5",
-                  name: "funding["+region+"][Debt funding supportable from net rental income]"
+                  name: "funding[Debt funding supportable from net rental income]"
                 })
               }
             },
@@ -57,7 +51,7 @@
                     },
                     id: "funding-other-debt-funding-details",
                     classes: "govuk-input--width-20",
-                    name: "funding["+region+"][Other debt funding details]"
+                    name: "funding[Other debt funding details]"
                   }) +
                   govukInput({
                     label: {
@@ -68,7 +62,7 @@
                     },
                     id: "funding-other-debt-funding",
                     classes: "govuk-input--width-5",
-                    name: "funding["+region+"][Other debt funding]"
+                    name: "funding[Other debt funding]"
                   })
               }
             },
@@ -88,7 +82,7 @@
                   },
                   id: "funding-oms-cross-subsidy",
                   classes: "govuk-input--width-5",
-                  name: "funding["+region+"][Cross subsidy from open market sales]"
+                  name: "funding[Cross subsidy from open market sales]"
                 })
               }
             },
@@ -105,7 +99,7 @@
                   },
                   id: "funding-grant-funded-first-tranche-sales",
                   classes: "govuk-input--width-5",
-                  name: "funding["+region+"][Revenue from grant funded first tranche sales]"
+                  name: "funding[Revenue from grant funded first tranche sales]"
                 })
               }
             },
@@ -122,7 +116,7 @@
                   },
                   id: "funding-other-cross-subsidy",
                   classes: "govuk-input--width-5",
-                  name: "funding["+region+"][Other cross subsidy]"
+                  name: "funding[Other cross subsidy]"
                 })
               }
             },
@@ -139,7 +133,7 @@
                   },
                   id: "funding-other-internal-subsidy",
                   classes: "govuk-input--width-5",
-                  name: "funding["+region+"][Other internal subsidy]"
+                  name: "funding[Other internal subsidy]"
                 })
               }
             },
@@ -156,7 +150,7 @@
                   },
                   id: "funding-new-homes-england-grant",
                   classes: "govuk-input--width-5",
-                  name: "funding["+region+"][New Homes England grant]"
+                  name: "funding[New Homes England grant]"
                 })
               }
             },
@@ -173,7 +167,7 @@
                   },
                   id: "funding-recycled-rcgf",
                   classes: "govuk-input--width-5",
-                  name: "funding["+region+"][Recycled Capital Grant Fund (RCGF)]"
+                  name: "funding[Recycled Capital Grant Fund (RCGF)]"
                 })
               }
             },
@@ -190,7 +184,7 @@
                   },
                   id: "funding-other-public-subsidy",
                   classes: "govuk-input--width-5",
-                  name: "funding["+region+"][Other public subsidy]"
+                  name: "funding[Other public subsidy]"
                 })
               }
             },
@@ -204,7 +198,7 @@
                   },
                   id: "funding-other-funding-sources-details",
                   classes: "govuk-input--width-20",
-                  name: "funding["+region+"][Other sources of funding details]"
+                  name: "funding[Other sources of funding details]"
                 }) +
                 govukInput({
                   label: {
@@ -215,7 +209,7 @@
                   },
                   id: "funding-other-funding-sources",
                   classes: "govuk-input--width-5",
-                  name: "funding["+region+"][Other sources of funding]"
+                  name: "funding[Other sources of funding]"
                 })
               }
             }
@@ -223,7 +217,7 @@
         }) }}
       </div>
 
-      <input type="hidden" name="tasks[funding-{{ region | parameterize }}]" value="completed">
+      <input type="hidden" name="tasks[funding]" value="completed">
 
       {{ govukButton({
         text: "Save and continue"

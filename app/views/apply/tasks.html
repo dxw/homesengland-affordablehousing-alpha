@@ -78,16 +78,16 @@
                 </span>
                 {{ taskStatus('totalCost-' + region | parameterize, data['tasks']) }}
               </li>
-              <li class="app-task-list__item">
-                <span class="app-task-list__task-name">
-                  {% if 'funding-' + region | parameterize in data['tasks'] %}<a href="/apply/funding?region={{ region }}">{% endif %}
-                    {{ region }} - Define funding
-                  {% if 'funding-' + region | parameterize in data['tasks'] %}</a>{% endif %}
-                </span>
-                {{ taskStatus('funding-' + region | parameterize, data['tasks']) }}
-              </li>
             {% endfor %}
           {% endif %}
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="/apply/funding">
+                Define funding breakdown
+              </a>
+            </span>
+            {{ taskStatus('funding', data['tasks']) }}
+          </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               {% if 'programmeTimeline' in data['tasks'] %}<a href="/apply/timeline">{% endif %}

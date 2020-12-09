@@ -24,7 +24,8 @@ module.exports = {
     partnership: 'not_started',
     homesLocation: 'not_started',
     supportingEvidence: 'not_started',
-    deliveryPartners: 'not_started'
+    deliveryPartners: 'not_started',
+    funding: 'not_started'
   }
 
 }
