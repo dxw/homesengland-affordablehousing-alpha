@@ -23,7 +23,8 @@ module.exports = {
     checkEligibility: 'not_started',
     partnership: 'not_started',
     homesLocation: 'not_started',
-    supportingEvidence: 'not_started'
+    supportingEvidence: 'not_started',
+    deliveryPartners: 'not_started'
   }
 
 }

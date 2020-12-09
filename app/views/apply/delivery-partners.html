@@ -1,0 +1,107 @@
+
+{% extends "apply/layout.html" %}
+
+{% block content %}
+
+{% set addAnotherHtml %}
+  <div class="moj-add-another">
+    {% call govukFieldset({
+      classes: 'moj-add-another__item',
+      legend: {
+        text: 'Delivery partner',
+        classes: 'moj-add-another__title govuk-fieldset__legend--m',
+        isPageHeading: false
+      }
+    }) %}
+
+    {{ govukInput({
+      id: 'delivery_partner[0][name]',
+      name: 'delivery_partner[0][name]',
+      label: {
+        html: 'Provider name',
+        classes: 'govuk-!-font-weight-bold'
+      },
+      attributes: {
+        'data-name': 'delivery_partner[%index%][name]',
+        'data-id': 'delivery_partner[%index%][name]'
+      }
+    }) }}
+
+    {{ govukInput({
+      id: 'delivery_partner[0][units]',
+      name: 'delivery_partner[0][units]',
+      label: {
+        html: 'Estimated number of units they’ll deliver',
+        classes: 'govuk-!-font-weight-bold'
+      },
+      classes: "govuk-input--width-5",
+      attributes: {
+        'data-name': 'delivery_partner[%index%][units]',
+        'data-id': 'delivery_partner[%index%][units]'
+      }
+    }) }}
+    {% endcall %}
+
+    <div class="moj-button-action">
+      {{ govukButton({
+        text: 'Add another delivery partner',
+        classes: 'govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4 govuk-!-margin-top-4'
+      }) }}
+    </div>
+  </div>
+{% endset %}
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukBackLink({
+      text: "Back",
+      href: "/apply/tasks"
+    }) }}
+
+    <form action="/apply/tasks" method="get">
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "delivery-partners",
+        name: "delivery-partners",
+        fieldset: {
+          legend: {
+            text: " Do you plan to work with delivery partners? ",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            conditional: {
+              html: addAnotherHtml
+            }
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+      <input type="hidden" name="tasks[deliveryPartners]" value="completed">
+      {{ govukButton({
+        text: "Save and continue",
+        type: "submit",
+        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    new MOJFrontend.AddAnother($('.moj-add-another'));
+  </script>
+{% endblock %}
