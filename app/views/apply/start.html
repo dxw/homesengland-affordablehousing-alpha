@@ -28,6 +28,13 @@
 
     <p class="govuk-body">If you want funding from Homes England for a scheme but don’t want a long term arrangement, you should apply using Continuous Market Engagement.</p>
 
+    {{ govukButton({
+      text: "Start now",
+      href: "/apply/sign-in",
+      classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
+      isStartButton: true
+    }) }}
+
     <h2 class="govuk-heading-m">Before you start</h2>
 
     <p class="govuk-body">To apply for funding you’ll need to:</p>
@@ -45,13 +52,6 @@
       <li>become a Registered Provider with the Register of Social Housing where your funding is for Social Housing</li>
       <li>enter into a new supply agreement with Homes England</li>
     </ul>
-
-    {{ govukButton({
-      text: "Start now",
-      href: "/apply/sign-in",
-      classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
-      isStartButton: true
-    }) }}
 
   </div>
 </div>
