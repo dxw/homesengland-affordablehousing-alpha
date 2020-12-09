@@ -1,0 +1,62 @@
+
+{% extends "apply/layout.html" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukBackLink({
+      text: "Back",
+      href: "/apply/tasks"
+    }) }}
+
+    <form action="/apply/tasks" method="get">
+      <h1 class="govuk-heading-l">Business plan effect of strategic partnership</h1>
+      
+      {{ govukCharacterCount({
+          label: {
+            text: "Impact on EBITDA - MRI interest cover of the Strategic Partnership to March 2029"
+          },
+          maxlength: 200,
+          id: "impact-on-ebitda",
+          name: "funding[Impact on EBITDA - MRI interest cover of the Strategic Partnership to March 2029]"
+      }) }}
+
+      {{ govukCharacterCount({
+          label: {
+            text: "Impact on gearing of the Strategic Partnership to March 2029 "
+          },
+          maxlength: 200,
+          id: "impact-on-gearing",
+          name: "funding[Impact on gearing of the Strategic Partnership to March 2029]"
+      }) }}
+
+      {{ govukCharacterCount({
+          label: {
+            text: "Impact of Strategic Partnership on credit rating"
+          },
+          maxlength: 200,
+          id: "impact-on-credit-rating",
+          name: "funding[Impact of Strategic Partnership on credit rating]"
+      }) }}
+
+      {{ govukCharacterCount({
+          label: {
+            text: "Impact on sales exposure"
+          },
+          maxlength: 200,
+          id: "impact-on-sales-exposure",
+          name: "funding[Impact on sales exposure]"
+      }) }}
+      <input type="hidden" name="tasks[businessPlanEffect]" value="completed">
+      {{ govukButton({
+        text: "Save and continue",
+        type: "submit",
+        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}
