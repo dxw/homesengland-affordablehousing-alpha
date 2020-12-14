@@ -17,6 +17,7 @@ $(document).ready(function () {
       }
     })
     $('.live-total').find('span').text(total.toLocaleString())
+    $('.live-region-total').find('span').text((total * $('.live-region-total').data('numberOfHomes')).toLocaleString())
   })
 
   $('[data-addTo]').on('change', function () {
