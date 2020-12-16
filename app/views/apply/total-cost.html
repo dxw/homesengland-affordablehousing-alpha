@@ -96,23 +96,6 @@
         }) }}
       {% endfor %}
 
-      <!-- Temporarily remove for user research, we need more information
-      <h3 class="govuk-heading-m govuk-!-margin-top-7">Home starts on site to Mar 2027</h3>
-      {% for type, amount in homesInRegion | removeEmpty %}
-        {{ govukInput({
-          label: {
-            text: type + ": Grant funded",
-            classes: "govuk-label--s"
-          },
-          hint: {
-            text: ""
-          },
-          id: "home-starts-"+ type | parameterize,
-          name: "costs["+region+"][home-starts]["+type+"]",
-          classes: "govuk-!-width-one-third"
-        }) }}
-      {% endfor %}
-      -->
       <input type="hidden" name="tasks[totalCost-{{ region | parameterize }}]" value="completed">
 
       {{ govukButton({

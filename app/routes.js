@@ -9,13 +9,4 @@ router.use(function (req, res, next) {
   next()
 })
 
-router.post('/apply/partnership', function (req, res) {
-  if (req.body['is-partnership'] === 'yes') {
-    return res.redirect('/apply/partnership-type')
-  } else {
-    req.session.data.tasks.partnership = 'completed'
-    return res.redirect('/apply/tasks')
-  }
-})
-
 module.exports = router
