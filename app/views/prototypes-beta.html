@@ -2,29 +2,17 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  (Archived) Prototypes - Apply for affordable housing funding
+  Prototypes - Apply for affordable housing funding
 {% endblock %}
-{% set currentPage = 'prototypes' %}
+{% set currentPage = 'prototypes-beta' %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-xl">
-      Alpha Prototypes - archived
+        Beta Prototypes
       </h1>
-
-      {% set html %}
-        <p class="govuk-notification-banner__heading">
-          This prototype is now out of date.
-          For the newest user journeys and screens please refer to
-          <a class="govuk-notification-banner__link" href="/prototype-beta">beta prototypes</a>.
-        </p>
-      {% endset %}
-
-      {{ govukNotificationBanner({
-        html: html
-      }) }}
 
       <div class="moj-timeline">
         <div class="moj-timeline__item">
@@ -32,11 +20,11 @@
             <h2 class="moj-timeline__title">Apply for affordable housing funding</h2>
           </div>
           <p class="moj-timeline__date">
-            <time datetime="2020-11-09T00:00:00.000Z">9 November 2020</time>
+            <time datetime="2021-01-15T00:00:00.000Z">15 January 2021</time>
           </p>
           <div class="moj-timeline__description">
             <p>Journey for strategic partners to apply for the affordable housing fund</p>
-            <a class="govuk-button" href="/apply">View</a>
+            <a class="govuk-button" href="#">View</a>
 
             <details class="govuk-details govuk-!-margin-bottom-0">
               <summary class="govuk-details__summary">
@@ -54,6 +42,11 @@
                     </tr>
                   </thead>
                   <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">3</td>
+                      <td class="govuk-table__cell">Archive the alpha prototype and create link for beta</td>
+                      <td class="govuk-table__cell">From now on we are planning to publish screens made in Figma as the source of truth and to track changes. Using figma help us to collaborate and make changes quicker.</td>
+                    </tr>
                     <tr class="govuk-table__row">
                       <td class="govuk-table__cell">3</td>
                       <td class="govuk-table__cell">Reduce task list grouping</td>
