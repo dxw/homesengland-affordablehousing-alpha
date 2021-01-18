@@ -39,3 +39,24 @@ $govuk-assets-path: '/govuk/assets/';
   @extend .govuk-body;
   margin: 0;
 }
+
+.img-container {
+  border-top: 1px solid lightgrey;
+  @include govuk-responsive-padding(6, "bottom");
+  @include govuk-responsive-padding(8, "top");
+  img {
+    width: 100%;
+    height: auto;
+    border: 3px solid grey;
+    @include govuk-responsive-margin(3, "top");
+
+  }
+
+  .index-link {
+    float: left;
+    font-weight: bold;
+    padding-bottom: 1em;
+    //margin-left: -9rem;
+  }
+
+}
