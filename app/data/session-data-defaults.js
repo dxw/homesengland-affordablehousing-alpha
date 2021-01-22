@@ -28,7 +28,19 @@ module.exports = {
     funding: 'not_started',
     businessPlanEffect: 'not_started'
   },
-  journey_steps: [
+  version150121: [
+    {
+      image_url: "/public/images/15-01-2021/"
+    },
+    {
+      pdf_url: "/public/images/15-01-2021/pdf/"
+    }
+  ],
+  version220121: {
+    image_url: "/public/images/22-01-2021/",
+    pdf_url: "/public/images/22-01-2021/pdf/"
+  },
+  journey_steps_150121: [
    {
      "id": 1,
      "name": "Start application page",
@@ -261,6 +273,274 @@ module.exports = {
      "pdf_url": "/public/images/15-01-2021/pdf/",
      "pdf": "Submitted_Application_Status"
    }
+ ],
+  journey_steps_220121: [
+    {
+      "id": 1,
+      "name": "Start application page",
+      "narrative": "No change",
+      "business_logic": "TBC",
+      "file_name": "Start_application"
+    },
+    {
+      "id": 2,
+      "name": "Sign in",
+      "narrative": "No change",
+      "business_logic": "TBC",
+      "file_name": "Sign-in"
+    },
+    {
+      "id": 3,
+      "name": "Landing page status before starting application",
+      "narrative": "No change",
+      "business_logic": "TBC",
+      "file_name": "Status"
+    },
+    {
+      "id": 4,
+      "name": "Confirm before you start",
+      "narrative": "Content is still under review as there are different requirements for applying not yet agreed",
+      "business_logic": "TBC",
+      "file_name": "Confirmation_before_starting"
+    },
+    {
+      "id": 5,
+      "name": "Landing page status after application is started",
+      "narrative": "This is the page user sees after sgning in when the application was stared. The 'have completed and in progres' status is not important and can be skipped.",
+      "business_logic": "TBC",
+      "file_name": "Status_after_application_started"
+    },
+    {
+      "id": 6,
+      "name": "Task list landing page",
+      "narrative": "Task list has changed a lot. Some of the steps were added, rearranged and some of them grouped under common headings.",
+      "business_logic": "TBC",
+      "file_name": "Task_list"
+    },
+    {
+      "id": 7,
+      "name": "Partnership",
+      "narrative": "No change here, most likely will be a simple input type, with no database lookup",
+      "business_logic": "TBC",
+      "file_name": "Partnership"
+    },
+    {
+      "id": 8,
+      "name": "Where are you building",
+      "narrative": "Changed. We moved where and what tenures into two steps. Added tenure types for supported rent options",
+      "business_logic": "TBC",
+      "file_name": "Where_are_you_building"
+    },
+    {
+      "id": 9,
+      "name": "What tenures",
+      "narrative": "Changed. We moved where and what tenures into two steps. Added tenure types for supported rent options",
+      "business_logic": "TBC",
+      "file_name": "What_tenures"
+    },
+    {
+      "id": 10,
+      "name": "How many homes of each tenure type per region",
+      "narrative": "No change (?)",
+      "business_logic": "TBC",
+      "file_name": "How_many_homes"
+    },
+    {
+      "id": 11,
+      "name": "Modern methods of construction number of homes",
+      "narrative": "Tweaked the layout a bit. The content still needs to be refined as the categories split is very confusing",
+      "business_logic": "TBC",
+      "file_name": "MMC_number_of_homes"
+    },
+    {
+      "id": 12,
+      "name": "Rural and community led number of homes",
+      "narrative": "Tweaked the layout a bit. The content still needs to be refined as the categories split is very confusing. The hierarchy of headings needs sorting out",
+      "business_logic": "TBC",
+      "file_name": "Rural_and_community_led_number"
+    },
+    {
+      "id": 13,
+      "name": "Brown and green field sites number of homes",
+      "narrative": "Changed a bit. Added an option to provide other type of sites and number of homes. It would work in a similar way like adding a delivery partner",
+      "business_logic": "TBC",
+      "file_name": "Brown_and_green_field"
+    },
+    {
+      "id": 14,
+      "name": "Working with delivery partner",
+      "narrative": "same",
+      "business_logic": "TBC",
+      "file_name": "Delivery_partners"
+    },
+    {
+      "id": 15,
+      "name": "Working with delivery partner - yes",
+      "narrative": "same",
+      "business_logic": "TBC",
+      "file_name": "Delivery_partners-Yes"
+    },
+    {
+      "id": 16,
+      "name": "Delivery partner add another",
+      "narrative": "same",
+      "business_logic": "TBC",
+      "file_name": "Delivery_partner-add_another"
+    },
+    {
+      "id": 17,
+      "name": "Delivery partner after adding second one",
+      "narrative": "same",
+      "business_logic": "TBC",
+      "file_name": "Delivery_partner-added_another"
+    },
+    {
+      "id": 18,
+      "name": "Edit delivery partner",
+      "narrative": "same",
+      "business_logic": "TBC",
+      "file_name": "Delivery_partner-edit"
+    },
+    {
+      "id": 19,
+      "name": "Working with SME's",
+      "narrative": "New question.",
+      "business_logic": "TBC",
+      "file_name": "SMEs"
+    },
+    {
+      "id": 20,
+      "name": "Cost breakdown and grant required - index page",
+      "narrative": "Tweaked layout and content quite a lot. Simplified the tables",
+      "business_logic": "TBC",
+      "file_name": "Cost_breakdown"
+    },
+    {
+      "id": 21,
+      "name": "Cost and grant regional all tenures",
+      "narrative": "Changed a lot. Included all tenure types as an example . for each tenure type asks for average cost per home and grant required",
+      "business_logic": "TBC",
+      "file_name": "Cost-regional-all-tenures"
+    },
+    {
+      "id": 22,
+      "name": "Additional costs Modern Methods of Construction (MMC)",
+      "narrative": "included average costs and average grant needed. There are outstanding questions to resolve onthis page on what data is needed",
+      "business_logic": "TBC",
+      "file_name": "MMC_cost"
+    },
+    {
+      "id": 23,
+      "name": "Additional costs community led and rural areas",
+      "narrative": "Added the grant needed",
+      "business_logic": "TBC",
+      "file_name": "Rural_and_community_led_costs"
+    },
+    {
+      "id": 24,
+      "name": "Your delivery forecast - index page",
+      "narrative": "Not much changed.We are waiting to confirm any business logic",
+      "business_logic": "TBC",
+      "file_name": "Delivery_Forecast"
+    },
+    {
+      "id": 25,
+      "name": "Delivery forecast -  starts and completions per year",
+      "narrative": "Simplified the view. It was agreed that it needs to be only per year number.",
+      "business_logic": "TBC",
+      "file_name": "Delivery_Forecast_per_year"
+    },
+    {
+      "id": 26,
+      "name": "Development expenditure",
+      "narrative": "Seperated this step from grant drawdown. Simplified the view",
+      "business_logic": "TBC",
+      "file_name": "Development_expenditure_"
+    },
+    {
+      "id": 27,
+      "name": "Amount of grant drawdown each year",
+      "narrative": "Separated this step from development expenditure. Simplified the view",
+      "business_logic": "TBC",
+      "file_name": "Grant_drawdown"
+    },
+    {
+      "id": 28,
+      "name": "Capital funding breakdown",
+      "narrative": "WIP. We're asking to confirm the options and the language on the page",
+      "business_logic": "TBC",
+      "file_name": "Capital_funding"
+    },
+    {
+      "id": 29,
+      "name": "Non grant funded homes and other questions",
+      "narrative": "WIP. We're asking to confirm the questions and the language on the page. Might be split into multiple single question pages. Who knows ¯\\_(ツ)_/¯",
+      "business_logic": "TBC",
+      "file_name": "Non_grant_funded_homes"
+    },
+    {
+      "id": 30,
+      "name": "Why supporting evidence - strategic narrative",
+      "narrative": "WIP. Split into two pages as questions will differ. Still waititn for the content and confirmation what will be asked",
+      "business_logic": "TBC",
+      "file_name": "Why-supporting_evidence_1"
+    },
+    {
+      "id": 31,
+      "name": "Why supporting evidence - qualitative assessment",
+      "narrative": "WIP. Split into two pages as questions will differ. Still waititn for the content and confirmation what will be asked",
+      "business_logic": "TBC",
+      "file_name": "Why-supporting_evidence_2"
+    },
+    {
+      "id": 32,
+      "name": "Summary - review your answers",
+      "narrative": "No change. It will need designing properly once we agree the steps",
+      "business_logic": "TBC",
+      "file_name": "Summary"
+    },
+    {
+      "id": 33,
+      "name": "Sign off - draft",
+      "narrative": "WIP. Waiting for content from other people",
+      "business_logic": "TBC",
+      "file_name": "Signoff_draft"
+    },
+    {
+      "id": 34,
+      "name": "Submit application",
+      "narrative": "WIP. Relies on the previous step. Might be turned into one",
+      "business_logic": "TBC",
+      "file_name": "Submit"
+    },
+    {
+      "id": 35,
+      "name": "Confirmation page",
+      "narrative": "Same",
+      "business_logic": "TBC",
+      "file_name": "Confirmation_page"
+    },
+    {
+      "id": 36,
+      "name": "Submitted application status",
+      "narrative": "Same",
+      "business_logic": "TBC",
+      "file_name": "Submitted_Application_Status"
+    },
+    {
+      "id": 37,
+      "name": "Draft - Long term application task list",
+      "narrative": "New page - WIP for applicants applying for long term funding.",
+      "business_logic": "TBC",
+      "file_name": "Task_list-longer_term"
+    },
+    {
+      "id": 38,
+      "name": "Draft - Apply for long term landing page",
+      "narrative": "New page - WIP for applicants applying for long term funding.",
+      "business_logic": "TBC",
+      "file_name": "Longer_term_input"
+    }
   ]
 
 }
