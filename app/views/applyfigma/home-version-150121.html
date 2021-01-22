@@ -1,0 +1,47 @@
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Prototypes - Apply for affordable housing funding
+{% endblock %}
+{% set currentPage = 'figma' %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        Journey
+      </h1>
+
+      <h2 id="index" class="govuk-heading-m">Steps in the journey</h2>
+      <h3 class="govuk-heading-m"><a href="/applyfigma/home"></a>Most recent version can be found here</h3>
+      <p class="govuk-body">This version was added on Friday, 15th Jan 2021</p>
+      <ol class="govuk-list govuk-list--number">
+        {% for step in data.journey_steps_150121 %}
+        <li>
+          <a href="#{{ step['id'] }}"> {{ step['name'] }}</a>
+        </li>
+        {% endfor %}
+
+      </ol>
+
+      {% for step in data.journey_steps_150121 %}
+
+      <div id="{{ step['id'] }}" class="img-container govuk-body">
+        <h3 class="govuk-heading-m">
+          {{ step["name"] }}
+        </h3>
+        <a href="{{ step['pdf_url'] + step['pdf'] }}.pdf" download="{{ step['id'] }} . {{ step['name'] }}">PDF download</a>
+        <img
+        src="{{ step['img_url'] + step['image'] }}.png" alt="alt text">
+        <a class="index-link" href="#index">Go back to index</a>
+      </div>
+
+      {% endfor %}
+
+
+    </div>
+  </div>
+
+{% endblock %}
