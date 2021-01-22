@@ -11,13 +11,14 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-xl">
-        Journey
+        Apply for affordable housing journey
       </h1>
 
       <h2 id="index" class="govuk-heading-m">Steps in the journey</h2>
-      <p class="govuk-body-s">This version was added on Friday, 15th Jan 2021</p>
+      <p class="govuk-body govuk-!-font-size-24">This version was added on Friday, 22nd Jan 2021</p>
+      <p class="govuk-body govuk-!-font-size-16"><a href="/applyfigma/home-version-150121.html">Previous version from 15th January 2021</a></p>
       <ol class="govuk-list govuk-list--number">
-        {% for step in data.journey_steps %}
+        {% for step in data.journey_steps_220121 %}
         <li>
           <a href="#{{ step['id'] }}"> {{ step['name'] }}</a>
         </li>
@@ -25,15 +26,17 @@
 
       </ol>
 
-      {% for step in data.journey_steps %}
+      {% for step in data.journey_steps_220121 %}
 
       <div id="{{ step['id'] }}" class="img-container govuk-body">
         <h3 class="govuk-heading-m">
           {{ step["name"] }}
         </h3>
-        <a href="{{ step['pdf_url'] + step['pdf'] }}.pdf" download="{{ step['id'] }} . {{ step['name'] }}">PDF download</a>
+        <p><span class="govuk-!-font-weight-bold">Notes:</span> {{ step["narrative"] }}</p>
+        <p><span class="govuk-!-font-weight-bold">Business logic:</span> {{ step["business_logic"] }}</p>
+        <a href="{{ data['version220121']['pdf_url'] + step['file_name'] }}.pdf" download="{{ step['id'] }} . {{ step['name'] }}">PDF download</a>
         <img
-        src="{{ step['img_url'] + step['image'] }}.png" alt="alt text">
+        src="{{ data['version220121']['image_url'] + step['file_name'] }}.png" alt="alt text">
         <a class="index-link" href="#index">Go back to index</a>
       </div>
 
